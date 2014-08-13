@@ -42,7 +42,20 @@
 
         <!--ContentPanel - zusätzliche Inhalte hier platzieren-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-
+            <StackPanel VerticalAlignment="Top">
+                <TextBlock Text="Current value:" />
+                <TextBlock Text="{Binding CurrentValue}" Style="{StaticResource PhoneTextTitle1Style}" />
+                <TextBlock Text="Round counter:" />
+                <TextBlock Text="{Binding RoundCounter}" Style="{StaticResource PhoneTextTitle1Style}" />
+                <TextBlock Text="Round time:" />
+                <TextBlock Text="{Binding RoundTime}" Style="{StaticResource PhoneTextTitle1Style}" />
+            </StackPanel>
+            <StackPanel VerticalAlignment="Bottom">
+                <Button Content="Start" Command="{Binding StartCommand}"/>
+                <Button Content="Stop" Command="{Binding StopCommand}"/>
+                <Button Content="Pause" Command="{Binding PauseCommand}"/>
+                <Button Content="Continue" Command="{Binding ContinueCommand}"/>
+            </StackPanel>
         </Grid>
 
         <!-- Feedback dialog -->

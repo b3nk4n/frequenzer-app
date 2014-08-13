@@ -9,6 +9,8 @@ using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using Frequenzer.App.Resources;
 using PhoneKit.Framework.Support;
+using Ninject;
+using Frequenzer.App.ViewModels;
 
 namespace Frequenzer.App
 {
@@ -29,6 +31,9 @@ namespace Frequenzer.App
             {
                 FeedbackManager.Instance.StartSecond();
             });
+
+            IKernel kernel = new StandardKernel(new MainModule());
+            this.DataContext = kernel.Get<IMainViewModel>();
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
