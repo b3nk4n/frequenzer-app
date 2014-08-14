@@ -7,6 +7,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:local="clr-namespace:Frequenzer.App.Controls"
+    xmlns:expr="clr-namespace:Microsoft.Expression.Shapes;assembly=Microsoft.Expression.Drawing"
     mc:Ignorable="d"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
@@ -42,15 +43,20 @@
 
         <!--ContentPanel - zusätzliche Inhalte hier platzieren-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <StackPanel VerticalAlignment="Top">
-                <TextBlock Text="Current value:" />
-                <TextBlock Text="{Binding CurrentValue}" Style="{StaticResource PhoneTextTitle1Style}" />
-                <TextBlock Text="Round counter:" />
-                <TextBlock Text="{Binding RoundCounter}" Style="{StaticResource PhoneTextTitle1Style}" />
-                <TextBlock Text="Round time:" />
-                <TextBlock Text="{Binding RoundTime}" Style="{StaticResource PhoneTextTitle1Style}" />
-            </StackPanel>
-            <StackPanel VerticalAlignment="Bottom">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="72"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            
+            <Grid Grid.Row="1">
+                <expr:Arc x:Name="ArcFigure" ArcThickness="30" ArcThicknessUnit="Pixel" Opacity="0.5"
+                   Fill="{StaticResource PhoneAccentBrush}" Height="360" Width="360" StartAngle="{Binding CurrentValueAngle}" EndAngle="360" />
+                <TextBlock Text="{Binding RoundCounter}" Style="{StaticResource PhoneTextHugeStyle}" 
+                           VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            </Grid>
+                
+            <StackPanel Grid.Row="2" VerticalAlignment="Bottom">
                 <Button Content="Start" Command="{Binding StartCommand}"/>
                 <Button Content="Stop" Command="{Binding StopCommand}"/>
                 <Button Content="Pause" Command="{Binding PauseCommand}"/>

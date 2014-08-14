@@ -2,10 +2,6 @@
 using PhoneKit.Framework.Audio;
 using PhoneKit.Framework.Core.MVVM;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Windows.Resources;
 using System.Windows.Threading;
@@ -201,7 +197,16 @@ namespace Frequenzer.App.ViewModels
                 {
                     _currentValue = value;
                     NotifyPropertyChanged("CurrentValue");
+                    NotifyPropertyChanged("CurrentValueAngle");
                 }
+            }
+        }
+
+        public double CurrentValueAngle
+        {
+            get
+            {
+                return (1 - ((double)_currentValue / _roundTime)) * 360.0;
             }
         }
 

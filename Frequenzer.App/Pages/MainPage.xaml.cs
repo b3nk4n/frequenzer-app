@@ -11,6 +11,7 @@ using Frequenzer.App.Resources;
 using PhoneKit.Framework.Support;
 using Ninject;
 using Frequenzer.App.ViewModels;
+using System.Windows.Media;
 
 namespace Frequenzer.App
 {

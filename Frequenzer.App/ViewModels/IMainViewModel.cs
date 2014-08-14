@@ -18,6 +18,8 @@ namespace Frequenzer.App.ViewModels
 
         int RoundTime { get; set; }
 
+        double CurrentValueAngle { get; } 
+
         ICommand StartCommand { get; }
 
         ICommand StopCommand { get; }
