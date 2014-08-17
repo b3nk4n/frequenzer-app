@@ -8,6 +8,8 @@
     <!--Anwendungsressourcen-->
     <Application.Resources>
         <local:LocalizedStrings xmlns:local="clr-namespace:Frequenzer.App" x:Key="LocalizedStrings"/>
+
+        <FontFamily x:Key="AppFont">/Assets/Fonts/Comfortaa_Bold.ttf#Comfortaa</FontFamily>
     </Application.Resources>
 
     <Application.ApplicationLifetimeObjects>

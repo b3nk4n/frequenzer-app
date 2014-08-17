@@ -129,6 +129,7 @@ namespace Frequenzer.App.ViewModels
         public void Start()
         {
             RoundCounter = 0;
+            CurrentValue = RoundTime;
             _timer.Start();
             _timerState = TimerState.Running;
         }
@@ -137,7 +138,6 @@ namespace Frequenzer.App.ViewModels
         {
             _timer.Stop();
             _timerState = TimerState.Stopped;
-            CurrentValue = RoundTime;
         }
 
         public void Pause()

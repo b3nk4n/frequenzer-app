@@ -21,7 +21,6 @@ namespace Frequenzer.App
         public MainPage()
         {
             InitializeComponent();
-            BuildLocalizedApplicationBar();
 
             // register startup actions
             StartupActionManager.Instance.Register(5, ActionExecutionRule.Equals, () =>
@@ -35,6 +34,9 @@ namespace Frequenzer.App
 
             IKernel kernel = new StandardKernel(new MainModule());
             this.DataContext = kernel.Get<IMainViewModel>();
+
+            // startup animation
+            StartupAnimation.Begin();
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -43,23 +45,6 @@ namespace Frequenzer.App
 
             // fire startup events
             StartupActionManager.Instance.Fire();
-        }
-
-        /// <summary>
-        /// Builds the localized application bar.
-        /// </summary>
-        private void BuildLocalizedApplicationBar()
-        {
-            ApplicationBar = new ApplicationBar();
-            ApplicationBar.Mode = ApplicationBarMode.Minimized;
-
-            // about
-            ApplicationBarMenuItem appBarAboutMenuItem = new ApplicationBarMenuItem(AppResources.AboutTitle);
-            appBarAboutMenuItem.Click += (s, e) =>
-            {
-                NavigationService.Navigate(new Uri("/Pages/AboutPage.xaml", UriKind.Relative));
-            };
-            ApplicationBar.MenuItems.Add(appBarAboutMenuItem);
         }
     }
 }

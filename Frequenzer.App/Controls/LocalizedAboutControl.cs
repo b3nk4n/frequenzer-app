@@ -1,10 +1,13 @@
 ﻿using Frequenzer.App.Resources;
 using PhoneKit.Framework.Controls;
+using PhoneKit.Framework.Core.Themeing;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Media;
 
 namespace Frequenzer.App.Controls
 {
@@ -16,7 +19,15 @@ namespace Frequenzer.App.Controls
         protected override void LocalizeContent()
         {
             // app
-            ApplicationIconSource = new Uri("/Assets/ApplicationIcon.png", UriKind.Relative);
+            if (PhoneThemeHelper.IsLightThemeActive)
+            {
+                ApplicationIconSource = new Uri("/Assets/ApplicationIcon.png", UriKind.Relative);
+            }
+            else
+            {
+                ApplicationIconSource = new Uri("/Assets/ApplicationIconBlack.png", UriKind.Relative);
+            }
+            BackgroundTheme.Color = (Color)Application.Current.Resources["PhoneForegroundColor"];
             ApplicationTitle = AppResources.ApplicationTitle;
             ApplicationVersion = AppResources.ApplicationVersion;
             ApplicationAuthor = AppResources.ApplicationAuthor;
@@ -32,10 +43,10 @@ namespace Frequenzer.App.Controls
             MoreAppsSearchTerms = "Benjamin Sautermeister";
 
             // contributors
-            ContributorsListVisibility = System.Windows.Visibility.Collapsed;
-            //IList<ContributorModel> contributors = new List<ContributorModel>();
-            //contributors.Add(new ContributorModel("/Assets/Images/icon.png", "John Caserta from The Noun Project"));
-            //SetContributorsList(contributors);
+            ContributorsListVisibility = System.Windows.Visibility.Visible;
+            IList<ContributorModel> contributors = new List<ContributorModel>();
+            contributors.Add(new ContributorModel("/Assets/Images/font.png", "Johan Aakerlund"));
+            SetContributorsList(contributors);
         }
     }
 }
