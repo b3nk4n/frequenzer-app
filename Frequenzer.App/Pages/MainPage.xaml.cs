@@ -12,11 +12,14 @@ using PhoneKit.Framework.Support;
 using Ninject;
 using Frequenzer.App.ViewModels;
 using System.Windows.Media;
+using System.Diagnostics;
 
 namespace Frequenzer.App
 {
     public partial class MainPage : PhoneApplicationPage
     {
+        private IMainViewModel _mainViewModel;
+
         // Konstruktor
         public MainPage()
         {
@@ -32,8 +35,8 @@ namespace Frequenzer.App
                 FeedbackManager.Instance.StartSecond();
             });
 
-            IKernel kernel = new StandardKernel(new MainModule());
-            this.DataContext = kernel.Get<IMainViewModel>();
+            _mainViewModel = App.Injector.Get<IMainViewModel>();
+            this.DataContext = _mainViewModel;
 
             // startup animation
             StartupAnimation.Begin();
@@ -43,8 +46,64 @@ namespace Frequenzer.App
         {
             base.OnNavigatedTo(e);
 
+            ApplySettings();
+
             // fire startup events
             StartupActionManager.Instance.Fire();
+        }
+
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            base.OnNavigatedFrom(e);
+
+            Settings.LastTimerState.Value = _mainViewModel.State;
+        }
+
+        private void ApplySettings()
+        {
+            PhoneApplicationService.Current.UserIdleDetectionMode = (Settings.PreventLockScreen.Value ? IdleDetectionMode.Disabled : IdleDetectionMode.Enabled);
+            PhoneApplicationService.Current.ApplicationIdleDetectionMode = IdleDetectionMode.Disabled;
+
+            PhoneApplicationFrame rootFrame = App.Current.RootVisual as PhoneApplicationFrame;
+            if (rootFrame != null)
+            {
+                rootFrame.Obscured += (s, e) =>
+                {
+
+                };
+                rootFrame.Unobscured += (s, e) =>
+                {
+
+                };
+            }
+
+            if (Settings.LastStartTimeInSeconds.Value != DateTime.MaxValue)
+            {
+                _mainViewModel.State = Settings.LastTimerState.Value;
+
+                // ensure no longer than 1 day
+                DateTime startTime = Settings.LastStartTimeInSeconds.Value;
+                if ((DateTime.Now - startTime).TotalDays > 1)
+                {
+                    _mainViewModel.State = TimerState.Stopped;
+                }
+
+                switch (_mainViewModel.State)
+                {
+                    case TimerState.Running:
+                        VisualStateManager.GoToState(this, "RunningState", true);
+                        break;
+                    case TimerState.Stopped:
+                        // NOP
+                        break;
+                    case TimerState.Paused:
+                        VisualStateManager.GoToState(this, "PausedState", true);
+                        break;
+                }     
+                _mainViewModel.StartTime = startTime;
+                _mainViewModel.PauseStartTime = Settings.LastPauseTimeInSeconds.Value;
+                _mainViewModel.UpdateCommands();
+            }
         }
     }
 }

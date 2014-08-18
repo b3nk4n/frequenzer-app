@@ -18,7 +18,18 @@
     <phone:PhoneApplicationPage.Resources>
 		<ControlTemplate x:Key="EmptyButtonTemplate" TargetType="Button">
 			<Grid Margin="6">
-				<Ellipse Fill="{StaticResource PhoneForegroundBrush}" />
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal"/>
+                        <VisualState x:Name="Disabled">
+                            <Storyboard>
+                                <DoubleAnimation Duration="0" Storyboard.TargetName="Circle" Storyboard.TargetProperty="Opacity" To=".55"/>
+                            </Storyboard>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateManager.VisualStateGroups>
+                <Ellipse Fill="{StaticResource PhoneBackgroundBrush}"/>
+                <Ellipse x:Name="Circle" Fill="{StaticResource PhoneForegroundBrush}" Margin="10" toolkit:TiltEffect.IsTiltEnabled="True"/>
 				<ContentPresenter />
 			</Grid>
         </ControlTemplate>
@@ -123,6 +134,9 @@
 						<DoubleAnimation Duration="0" To="-100" Storyboard.TargetProperty="(UIElement.Projection).(PlaneProjection.GlobalOffsetY)" Storyboard.TargetName="HelpButton" d:IsOptimized="True"/>
 						<DoubleAnimation Duration="0" To="100" Storyboard.TargetProperty="(UIElement.Projection).(PlaneProjection.GlobalOffsetX)" Storyboard.TargetName="SettingsButton" d:IsOptimized="True"/>
 						<DoubleAnimation Duration="0" To="-100" Storyboard.TargetProperty="(UIElement.Projection).(PlaneProjection.GlobalOffsetY)" Storyboard.TargetName="SettingsButton" d:IsOptimized="True"/>
+						<DoubleAnimation Duration="0" To="300" Storyboard.TargetProperty="(UIElement.Projection).(PlaneProjection.LocalOffsetX)" Storyboard.TargetName="button" d:IsOptimized="True"/>
+						<DoubleAnimation Duration="0" To="-300" Storyboard.TargetProperty="(UIElement.Projection).(PlaneProjection.LocalOffsetX)" Storyboard.TargetName="button1" d:IsOptimized="True"/>
+						<DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="TimerCircle" d:IsOptimized="True"/>
 					</Storyboard>
 				</VisualState>
 				<VisualState x:Name="PausedState">
@@ -141,6 +155,9 @@
 						<DoubleAnimation Duration="0" To="-100" Storyboard.TargetProperty="(UIElement.Projection).(PlaneProjection.GlobalOffsetY)" Storyboard.TargetName="SettingsButton" d:IsOptimized="True"/>
 						<DoubleAnimation Duration="0" To="-100" Storyboard.TargetProperty="(UIElement.Projection).(PlaneProjection.GlobalOffsetX)" Storyboard.TargetName="HelpButton" d:IsOptimized="True"/>
 						<DoubleAnimation Duration="0" To="-100" Storyboard.TargetProperty="(UIElement.Projection).(PlaneProjection.GlobalOffsetY)" Storyboard.TargetName="HelpButton" d:IsOptimized="True"/>
+						<DoubleAnimation Duration="0" To="-300" Storyboard.TargetProperty="(UIElement.Projection).(PlaneProjection.LocalOffsetX)" Storyboard.TargetName="button1" d:IsOptimized="True"/>
+						<DoubleAnimation Duration="0" To="300" Storyboard.TargetProperty="(UIElement.Projection).(PlaneProjection.LocalOffsetX)" Storyboard.TargetName="button" d:IsOptimized="True"/>
+						<DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="TimerCircle" d:IsOptimized="True"/>
 					</Storyboard>
 				</VisualState>
 			</VisualStateGroup>
@@ -172,74 +189,99 @@
         <!--ContentPanel - zusätzliche Inhalte hier platzieren-->
 		<Grid x:Name="ContentPanel" Grid.Row="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="128"/>
+                <RowDefinition Height="102"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="132"/>
             </Grid.RowDefinitions>
             
-            <Button x:Name="HelpButton" Width="92" Height="92" HorizontalAlignment="Left" VerticalAlignment="Top" Template="{StaticResource EmptyButtonTemplate}">
+            <Button x:Name="HelpButton" Width="102" Height="102" HorizontalAlignment="Left" VerticalAlignment="Top" Template="{StaticResource EmptyButtonTemplate}">
 				<Button.Projection>
 					<PlaneProjection/>
 				</Button.Projection>
-				<i:Interaction.Triggers>
-					<i:EventTrigger EventName="Click">
-						<ec:NavigateToPageAction TargetPage="/Pages/AboutPage.xaml"/>
-					</i:EventTrigger>
-				</i:Interaction.Triggers>
-				<Path Width="26" Height="38" Stretch="Fill" Fill="{StaticResource PhoneBackgroundBrush}" Data="F1 M 25,27L 46,19L 46,22.25L 28.5,29L 31.75,31.25L 51,23.75L 51,48.5L 31.75,57L 25,52L 25,27 Z M 41.8929,46.0327C 40.9009,46.4197 40.0967,47.5376 40.0967,48.5296C 40.0967,49.5216 40.9009,50.0121 41.8929,49.6251C 42.8849,49.2381 43.6891,48.1202 43.6891,47.1282C 43.6891,46.1361 42.8849,45.6457 41.8929,46.0327 Z M 42.2521,31.5228C 39.0777,32.7612 36.5042,36.1777 36.5042,39.1538L 36.5042,39.8723L 40.0967,38.4708L 40.0967,37.3931C 40.0967,36.2027 41.0617,34.8612 42.2521,34.3968C 43.4425,33.9324 44.4076,34.5209 44.4076,35.7113C 44.4076,36.2305 44.4076,36.4298 42.9706,38.4274C 42.2521,39.4262 40.0967,41.7753 40.0967,44.2187L 40.0967,45.2964L 43.6891,43.895L 43.6891,42.458C 43.6891,41.2676 44.4076,40.0223 45.8445,38.7432C 47.2815,37.4641 48,35.3876 48,34.3099C 48,31.3338 45.4266,30.2844 42.2521,31.5228 Z "/>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <ec:NavigateToPageAction TargetPage="/Pages/AboutPage.xaml"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+                <Path Width="34" Height="42" Stretch="Fill" Fill="{StaticResource PhoneBackgroundBrush}" Data="F1 M 37.2083,49.0833C 39.3945,49.0833 41.1667,50.8555 41.1667,53.0417C 41.1667,55.2278 39.3945,57 37.2083,57C 35.0222,57 33.25,55.2278 33.25,53.0417C 33.25,50.8555 35.0222,49.0833 37.2083,49.0833 Z M 38,17.4167C 44.9956,17.4167 50.6666,21.9416 50.6666,28.5C 50.6666,30.875 49.0833,34.8333 45.9167,36.4167C 42.75,38 41.1667,40.1267 41.1667,42.75L 41.1667,42.9167L 33.25,42.9167L 33.25,42.5417C 33.25,38.1571 38,34.8333 39.5833,33.25C 42.75,30.0833 42.75,29.644 42.75,28.5C 42.75,25.8767 40.6233,23.75 38,23.75C 35.3766,23.75 33.25,25.8767 33.25,28.5L 33.25,30.875L 25.3333,30.875L 25.3333,29.2917C 25.3333,22.7333 31.0044,17.4167 38,17.4167 Z " Stroke="{StaticResource PhoneBackgroundBrush}" StrokeThickness="4" StrokeLineJoin="Round"/>
 			</Button>
-			<Button x:Name="SettingsButton" Width="92" Height="92" HorizontalAlignment="Right" VerticalAlignment="Top" Template="{StaticResource EmptyButtonTemplate}">
+			<Button x:Name="SettingsButton" Width="102" Height="102" HorizontalAlignment="Right" VerticalAlignment="Top" Template="{StaticResource EmptyButtonTemplate}">
 				<Button.Projection>
 					<PlaneProjection/>
 				</Button.Projection>
 				<i:Interaction.Triggers>
 					<i:EventTrigger EventName="Click">
-						<ec:NavigateToPageAction TargetPage="/Pages/AboutPage.xaml"/>
+						<ec:NavigateToPageAction TargetPage="/Pages/SettingsPage.xaml"/>
 					</i:EventTrigger>
 				</i:Interaction.Triggers>
-				<Path Width="38" Height="38" Stretch="Fill" Fill="{StaticResource PhoneBackgroundBrush}" Data="F1 M 38,23.5C 38.8643,23.5 39.7109,23.5756 40.5337,23.7206L 42.6275,18.5381L 48.1901,20.787L 46.0964,25.9692C 47.6473,27.0149 48.9851,28.3527 50.0308,29.9036L 55.213,27.8099L 57.4619,33.3725L 52.2794,35.4664C 52.4244,36.2891 52.5,37.1357 52.5,38C 52.5,38.8643 52.4244,39.7109 52.2794,40.5337L 57.4619,42.6275L 55.213,48.1901L 50.0308,46.0964C 49.0795,47.5073 47.8865,48.7418 46.5112,49.7405L 48.7844,54.8462L 43.3041,57.2891L 41.0307,52.1828C 40.0533,52.3906 39.0394,52.5 38,52.5C 37.1357,52.5 36.2891,52.4244 35.4664,52.2794L 33.3725,57.462L 27.8099,55.213L 29.9036,50.0309C 28.3527,48.9851 27.0149,47.6473 25.9691,46.0964L 20.787,48.1901L 18.538,42.6275L 23.7206,40.5336C 23.5756,39.7109 23.5,38.8643 23.5,38C 23.5,37.1357 23.5756,36.2891 23.7206,35.4664L 18.538,33.3725L 20.787,27.8099L 25.9691,29.9036C 26.9205,28.4927 28.1135,27.2582 29.4889,26.2594L 27.2157,21.1537L 32.6959,18.7109L 34.9694,23.8172C 35.9468,23.6094 36.9606,23.5 38,23.5 Z M 38,28C 32.4771,28 28,32.4772 28,38C 28,43.5229 32.4771,48 38,48C 43.5228,48 48,43.5229 48,38C 48,32.4772 43.5228,28 38,28 Z "/>
+                <Path Width="38" Height="38" Stretch="Fill" Fill="{StaticResource PhoneBackgroundBrush}" Data="F1 M 38,23.5C 38.8643,23.5 39.7109,23.5756 40.5337,23.7206L 42.6275,18.5381L 48.1901,20.787L 46.0964,25.9692C 47.6473,27.0149 48.9851,28.3527 50.0308,29.9036L 55.213,27.8099L 57.4619,33.3725L 52.2794,35.4664C 52.4244,36.2891 52.5,37.1357 52.5,38C 52.5,38.8643 52.4244,39.7109 52.2794,40.5337L 57.4619,42.6275L 55.213,48.1901L 50.0308,46.0964C 49.0795,47.5073 47.8865,48.7418 46.5112,49.7405L 48.7844,54.8462L 43.3041,57.2891L 41.0307,52.1828C 40.0533,52.3906 39.0394,52.5 38,52.5C 37.1357,52.5 36.2891,52.4244 35.4664,52.2794L 33.3725,57.462L 27.8099,55.213L 29.9036,50.0309C 28.3527,48.9851 27.0149,47.6473 25.9691,46.0964L 20.787,48.1901L 18.538,42.6275L 23.7206,40.5336C 23.5756,39.7109 23.5,38.8643 23.5,38C 23.5,37.1357 23.5756,36.2891 23.7206,35.4664L 18.538,33.3725L 20.787,27.8099L 25.9691,29.9036C 26.9205,28.4927 28.1135,27.2582 29.4889,26.2594L 27.2157,21.1537L 32.6959,18.7109L 34.9694,23.8172C 35.9468,23.6094 36.9606,23.5 38,23.5 Z M 38,28C 32.4771,28 28,32.4772 28,38C 28,43.5229 32.4771,48 38,48C 43.5228,48 48,43.5229 48,38C 48,32.4772 43.5228,28 38,28 Z " Stroke="{StaticResource PhoneBackgroundBrush}" StrokeThickness="4" StrokeLineJoin="Round"/>
 			</Button>
             
 			<Grid Grid.Row="1">
 				<!-- arc timer circle -->
-				<Grid x:Name="TimerCircle" RenderTransformOrigin="0.5,0.5">
+				<Grid x:Name="TimerCircle" RenderTransformOrigin="0.5,0.5" Opacity="0">
 					<Grid.RenderTransform>
 						<CompositeTransform ScaleX="0.05" ScaleY="0.05" TranslateY="-130"/>
 					</Grid.RenderTransform>
 					<expr:Arc x:Name="ArcFigure" ArcThickness="30" ArcThicknessUnit="Pixel"
 						Fill="{StaticResource PhoneForegroundBrush}" Height="400" Width="400" StartAngle="{Binding CurrentValueAngle}" EndAngle="360" />
-					<TextBlock Text="{Binding RoundCounter}" FontSize="192" FontFamily="{StaticResource AppFont}" Foreground="{StaticResource PhoneForegroundBrush}"
-						VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <expr:Arc ArcThickness="30" ArcThicknessUnit="Pixel"
+						Fill="{StaticResource PhoneForegroundBrush}" Height="400" Width="400" StartAngle="0" EndAngle="360" Opacity="0.33"/>
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <TextBlock Text="{Binding RoundCounter}" Margin="0,-16,0,-52"  FontSize="192" FontFamily="{StaticResource AppFont}" Foreground="{StaticResource PhoneForegroundBrush}" HorizontalAlignment="Center"/>
+                        <TextBlock Text="{Binding Path=LocalizedResources.Rounds, Source={StaticResource LocalizedStrings}}" FontSize="58" FontFamily="{StaticResource AppFont}" Foreground="{StaticResource PhoneForegroundBrush}" HorizontalAlignment="Center"/>
+                    </StackPanel>
 				</Grid>
                 
                 
                 <!-- round circle -->
 				<Grid x:Name="RoundCircle" RenderTransformOrigin="0.5,0.5">
 					<Grid.Projection>
-						<PlaneProjection/>
+						<PlaneProjection />
 					</Grid.Projection>
 					<Grid.RenderTransform>
 						<CompositeTransform/>
 					</Grid.RenderTransform>
-					<Ellipse Width="420" Height="420" Fill="{StaticResource PhoneForegroundBrush}" Stroke="{StaticResource PhoneBackgroundBrush}" StrokeThickness="30" />
-                    <TextBlock Text="{Binding RoundTime}" FontSize="192" FontFamily="{StaticResource AppFont}" Foreground="{StaticResource PhoneBackgroundBrush}"
-						VerticalAlignment="Center" HorizontalAlignment="Center"/>
+					<Ellipse Width="440" Height="440" Fill="{StaticResource PhoneForegroundBrush}" Stroke="{StaticResource PhoneBackgroundBrush}" StrokeThickness="40" />
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <TextBlock Text="123" FontSize="192" Margin="0,-16,0,-52" FontFamily="{StaticResource AppFont}" Foreground="{StaticResource PhoneBackgroundBrush}" HorizontalAlignment="Center"/>
+                        <TextBlock Text="{Binding Path=LocalizedResources.Seconds, Source={StaticResource LocalizedStrings}}" FontSize="58" FontFamily="{StaticResource AppFont}" Foreground="{StaticResource PhoneBackgroundBrush}" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                    
 				</Grid>
-			</Grid>
                 
-			<Grid x:Name="ControlDialer" Grid.Row="2" Height="800" Width="800" HorizontalAlignment="Center">
-				<!--<Ellipse Fill="{StaticResource PhoneAccentBrush}" />-->
+                <!-- round time adjustment buttons -->
+                <Button x:Name="button1" Width="102"  Height="102" Template="{StaticResource EmptyButtonTemplate}"
+                        Command="{Binding DecrementRoundTimeCommand}">
+                    <Button.Projection>
+                        <PlaneProjection LocalOffsetX="-200" />
+                    </Button.Projection>
+                    <TextBlock Text="-" Foreground="{StaticResource PhoneBackgroundBrush}" FontFamily="{StaticResource AppFont}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="92"
+                               Margin="-2,0,0,4"/>
+                </Button>
+
+                <Button x:Name="button" Width="102"  Height="102" Template="{StaticResource EmptyButtonTemplate}"
+                        Command="{Binding IncrementRoundTimeCommand}">
+                    <Button.Projection>
+                        <PlaneProjection LocalOffsetX="200" />
+                    </Button.Projection>
+                    <TextBlock Text="+" Foreground="{StaticResource PhoneBackgroundBrush}" FontFamily="{StaticResource AppFont}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="92" 
+                               Margin="-2,6,0,0"/>
+                </Button>
+            </Grid>
+
+            <Grid x:Name="ControlDialer" Grid.Row="2" Height="800" Width="800" HorizontalAlignment="Center">
 				<StackPanel x:Name="DefaultStatePanel" Orientation="Horizontal" HorizontalAlignment="Center">
 					<StackPanel.Projection>
 						<PlaneProjection LocalOffsetY="-333"/>
 					</StackPanel.Projection>
-					<Button Command="{Binding StartCommand}" Width="128" Height="128" Template="{StaticResource EmptyButtonTemplate}" >
+					<Button Command="{Binding StartCommand}" Width="132" Height="132" Template="{StaticResource EmptyButtonTemplate}" >
 						<i:Interaction.Triggers>
 							<i:EventTrigger EventName="Click">
 								<ec:GoToStateAction StateName="RunningState"/>
 							</i:EventTrigger>
 						</i:Interaction.Triggers>
-						<Path Width="40" Height="40" Stretch="Fill" Fill="{StaticResource PhoneBackgroundBrush}" Data="F1 M 30.0833,22.1667L 50.6665,37.6043L 50.6665,38.7918L 30.0833,53.8333L 30.0833,22.1667 Z "/>
+						<Path Width="38" Height="42" Margin="4,0,0,0" Stretch="Fill" Fill="{StaticResource PhoneBackgroundBrush}" Data="F1 M 30.0833,22.1667L 50.6665,37.6043L 30.0833,53.8333L 30.0833,22.1667 Z " Stroke="{StaticResource PhoneBackgroundBrush}" StrokeThickness="10" StrokeLineJoin="Round" />
 					</Button>
 				</StackPanel>
 
@@ -248,12 +290,12 @@
 						<PlaneProjection LocalOffsetY="-333" RotationZ="120"/>
 					</StackPanel.Projection>
 					<Button Command="{Binding PauseCommand}"  Width="128" Height="128" Template="{StaticResource EmptyButtonTemplate}">
-						<i:Interaction.Triggers>
-							<i:EventTrigger EventName="Click">
-								<ec:GoToStateAction StateName="PausedState"/>
-							</i:EventTrigger>
-						</i:Interaction.Triggers>
-						<Path Width="40" Height="40" Stretch="Fill" Fill="{StaticResource PhoneBackgroundBrush}" Data="F1 M 26.9167,23.75L 33.25,23.75L 33.25,52.25L 26.9167,52.25L 26.9167,23.75 Z M 42.75,23.75L 49.0833,23.75L 49.0833,52.25L 42.75,52.25L 42.75,23.75 Z "/>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <ec:GoToStateAction StateName="PausedState"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                        <Path Width="42" Height="42" Stretch="Fill" Fill="{StaticResource PhoneBackgroundBrush}" Data="F1 M 28.9167,23.75L 32.25,23.75L 32.25,52.25L 28.9167,52.25L 28.9167,23.75 Z M 42.75,23.75L 46.0833,23.75L 46.0833,52.25L 42.75,52.25L 42.75,23.75 Z " Stroke="{StaticResource PhoneBackgroundBrush}" StrokeThickness="10" StrokeLineJoin="Round"/>
 					</Button>
 					<Button Command="{Binding StopCommand}"  Width="128" Height="128" Template="{StaticResource EmptyButtonTemplate}">
 						<i:Interaction.Triggers>
@@ -261,7 +303,7 @@
 								<ec:GoToStateAction StateName="Normal"/>
 							</i:EventTrigger>
 						</i:Interaction.Triggers>
-						<Rectangle Width="40" Height="40" Stretch="Fill" Fill="{StaticResource PhoneBackgroundBrush}"/>
+                        <Rectangle Width="42" Height="42" Stretch="Fill" Fill="{StaticResource PhoneBackgroundBrush}" Stroke="{StaticResource PhoneBackgroundBrush}" StrokeThickness="10" StrokeLineJoin="Round"/>
 					</Button>
 				</StackPanel>
 
@@ -275,7 +317,7 @@
 								<ec:GoToStateAction StateName="RunningState"/>
 							</i:EventTrigger>
 						</i:Interaction.Triggers>
-						<Path Width="40" Height="40" Stretch="Fill" Fill="{StaticResource PhoneBackgroundBrush}" Data="F1 M 38,22.1667L 58.5832,37.6043L 58.5832,38.7918L 38,53.8333L 38,22.1667 Z M 33.25,22.1667L 33.25,53.8333L 26.9167,53.8333L 26.9167,22.1667L 33.25,22.1667 Z "/>
+                        <Path Width="42" Height="42" Margin="4,0,0,0" Stretch="Fill" Fill="{StaticResource PhoneBackgroundBrush}" Data="F1 M 43,22.1667L 58.5832,38.7918L 43,53.8333L 43,22.1667 Z M 31.25,22.1667L 31.25,53.8333L 28.9167,53.8333L 28.9167,22.1667L 31.25,22.1667 Z " Stroke="{StaticResource PhoneBackgroundBrush}" StrokeThickness="10" StrokeLineJoin="Round"/>
 					</Button>
 					<Button Command="{Binding StopCommand}"  Width="128" Height="128" Template="{StaticResource EmptyButtonTemplate}">
 						<i:Interaction.Triggers>
@@ -283,7 +325,7 @@
 								<ec:GoToStateAction StateName="Normal"/>
 							</i:EventTrigger>
 						</i:Interaction.Triggers>
-						<Rectangle Width="40" Height="40" Stretch="Fill" Fill="{StaticResource PhoneBackgroundBrush}"/>
+                        <Rectangle Width="42" Height="42" Stretch="Fill" Fill="{StaticResource PhoneBackgroundBrush}" Stroke="{StaticResource PhoneBackgroundBrush}" StrokeThickness="10" StrokeLineJoin="Round"/>
 					</Button>
 				</StackPanel>
 			</Grid>

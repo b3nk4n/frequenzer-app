@@ -3,15 +3,12 @@ using PhoneKit.Framework.Controls;
 using PhoneKit.Framework.Core.Themeing;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
 
 namespace Frequenzer.App.Controls
 {
-    public class LocalizedAboutControl : AboutControlBase
+    public class LocalizedAboutControl : ThemedAboutControlBase
     {
         /// <summary>
         /// Localizes the user controls contents and texts.
@@ -27,7 +24,9 @@ namespace Frequenzer.App.Controls
             {
                 ApplicationIconSource = new Uri("/Assets/ApplicationIconBlack.png", UriKind.Relative);
             }
-            BackgroundTheme.Color = (Color)Application.Current.Resources["PhoneForegroundColor"];
+            Color phoneBackgroundColorSemiTrans = (Color)Application.Current.Resources["PhoneForegroundColor"];
+            phoneBackgroundColorSemiTrans.A = 222;
+            BackgroundTheme.Color = phoneBackgroundColorSemiTrans;
             ApplicationTitle = AppResources.ApplicationTitle;
             ApplicationVersion = AppResources.ApplicationVersion;
             ApplicationAuthor = AppResources.ApplicationAuthor;

@@ -1,7 +1,9 @@
 ﻿using Microsoft.Xna.Framework.Audio;
 using PhoneKit.Framework.Audio;
 using PhoneKit.Framework.Core.MVVM;
+using PhoneKit.Framework.Voice;
 using System;
+using System.Diagnostics;
 using System.Windows.Input;
 using System.Windows.Resources;
 using System.Windows.Threading;
@@ -15,18 +17,11 @@ namespace Frequenzer.App.ViewModels
     {
         private const string ALARM_FILE_PATH = "Assets/Audio/alarm1.wav";
 
-        private int _roundTime;
-        private int _currentValue;
-        private int _roundCounter;
+        private double _roundTime;
+        private DateTime _startTime = DateTime.MaxValue;
+        private DateTime _pauseStartTime = DateTime.MaxValue; // pause time has to be subtracted
 
         private DispatcherTimer _timer = new DispatcherTimer();
-
-        private enum TimerState
-        {
-            Running,
-            Stopped,
-            Paused
-        }
 
         /// <summary>
         /// The current timer state. Required because DispatcherTimer.IsEnabled has a short delay.
@@ -36,30 +31,48 @@ namespace Frequenzer.App.ViewModels
         /// <summary>
         /// The alarm sound.
         /// </summary>
-        private SoundEffectInstance _alarmSound;
+        private SoundEffect _alarmSound;
 
         private DelegateCommand _startCommand;
         private DelegateCommand _stopCommand;
         private DelegateCommand _pauseCommand;
         private DelegateCommand _continueCommand;
+        private DelegateCommand _incrementRoundTimeCommand;
+        private DelegateCommand _decrementRoundTimeCommand;
+
+        private const int TIME_FACTOR = 10;
 
         public MainViewModel()
         {
-            _timer.Interval = TimeSpan.FromSeconds(1.0);
-            _timer.Tick += (s, e) =>
+            int lastSecValue = 0;
+            _timer.Interval = TimeSpan.FromSeconds(1.0 / TIME_FACTOR);
+            _timer.Tick += async (s, e) =>
             {
-                CurrentValue--;
+                UpdateTimer();
+                double current = CurrentValue;
 
-                if (CurrentValue <= 0)
+                // check for change in second value
+                if (lastSecValue != (int)current)
                 {
-                    RoundCounter++;
-                    CurrentValue = RoundTime;
-
-                    _alarmSound.Play();
+                    lastSecValue = (int)current;
+                    if (current < 1 && TimeSinceStart > 1)
+                    {
+                        if (Settings.ReadRoundCounter.Value)
+                        {
+                            await Speech.Instance.Synthesizer.SpeakTextAsync(RoundCounter.ToString());
+                        }
+                        else
+                        {
+                            _alarmSound.Play(1.0f, -0.3f, 0.0f);
+                        }
+                    }
+                    else if (RoundTime >= 3 && current > RoundTime - 2 && Settings.IndicateRoundEnd.Value)
+                    {
+                        _alarmSound.Play(0.05f, -0.5f, 0.0f);
+                    }
                 }
             };
-            RoundTime = Settings.LastIntervalInSeconds.Value;
-            CurrentValue = RoundTime;
+            RoundTime = Settings.LastRoundTimeInSeconds.Value;
 
             InitializeCommands();
             InitializeSounds();
@@ -72,8 +85,7 @@ namespace Frequenzer.App.ViewModels
         {
             StreamResourceInfo alarmResource = App.GetResourceStream(new Uri(ALARM_FILE_PATH, UriKind.Relative));
             SoundEffects.Instance.Load(ALARM_FILE_PATH, alarmResource.Stream);
-            SoundEffect sound = SoundEffects.Instance[ALARM_FILE_PATH];
-            _alarmSound = sound.CreateInstance();
+            _alarmSound = SoundEffects.Instance[ALARM_FILE_PATH];
         }
 
         /// <summary>
@@ -84,6 +96,7 @@ namespace Frequenzer.App.ViewModels
             _startCommand = new DelegateCommand(() =>
             {
                 Start();
+                Settings.LastRoundTimeInSeconds.Value = RoundTime;
                 UpdateCommands();
             }, () =>
             {
@@ -116,43 +129,94 @@ namespace Frequenzer.App.ViewModels
             {
                 return _timerState == TimerState.Paused;
             });
+
+            _incrementRoundTimeCommand = new DelegateCommand(() =>
+            {
+                if (RoundTime < 999)
+                {
+                    RoundTime++;
+                }
+                UpdateCommands();
+            }, () =>
+            {
+                return RoundTime < 999;
+            });
+
+            _decrementRoundTimeCommand = new DelegateCommand(() =>
+            {
+                if (RoundTime > 3)
+                {
+                    RoundTime--;
+                }
+                UpdateCommands();
+            }, () =>
+            {
+                return RoundTime > 3;
+            });
         }
 
-        private void UpdateCommands()
+        public void UpdateCommands()
         {
             _startCommand.RaiseCanExecuteChanged();
             _stopCommand.RaiseCanExecuteChanged();
             _pauseCommand.RaiseCanExecuteChanged();
             _continueCommand.RaiseCanExecuteChanged();
+            _incrementRoundTimeCommand.RaiseCanExecuteChanged();
+            _decrementRoundTimeCommand.RaiseCanExecuteChanged();
+        }
+
+        public TimerState State
+        {
+            get
+            {
+                return _timerState;
+            }
+            set
+            {
+                _timerState = value;
+                if (_timerState == TimerState.Running)
+                {
+                    _timer.Start();
+                }
+                else
+                {
+                    _timer.Stop();
+                }
+            }
         }
 
         public void Start()
         {
-            RoundCounter = 0;
-            CurrentValue = RoundTime;
-            _timer.Start();
-            _timerState = TimerState.Running;
+            StartTime = DateTime.Now;
+            State = TimerState.Running;
         }
 
         public void Stop()
         {
-            _timer.Stop();
-            _timerState = TimerState.Stopped;
+            // no UI update here!
+            _startTime = DateTime.MaxValue;
+
+            State = TimerState.Stopped;
         }
 
         public void Pause()
         {
-            _timer.Stop();
-            _timerState = TimerState.Paused;
+            State = TimerState.Paused;
+            _pauseStartTime = DateTime.Now;
         }
 
         public void Continue()
         {
-            _timer.Start();
-            _timerState = TimerState.Running;
+            var pauseTime = DateTime.Now - _pauseStartTime;
+
+            // no UI updates here!
+            _startTime = StartTime.Add(pauseTime);
+            _pauseStartTime = DateTime.MaxValue;
+
+            State = TimerState.Running;
         }
 
-        public int RoundTime
+        public double RoundTime
         {
             get
             {
@@ -173,32 +237,63 @@ namespace Frequenzer.App.ViewModels
         {
             get
             {
-                return _roundCounter;
+                return (int)(TimeSinceStart / RoundTime);
+            }
+        }
+
+        public DateTime StartTime
+        {
+            get
+            {
+                return _startTime;
             }
             set
             {
-                if (_roundCounter != value)
+                _startTime = value;
+                UpdateTimer();
+            }
+        }
+
+        public DateTime PauseStartTime
+        {
+            get
+            {
+                return _pauseStartTime;
+            }
+            set
+            {
+                _pauseStartTime = value;
+                UpdateTimer();
+            }
+        }
+
+        private void UpdateTimer()
+        {
+            NotifyPropertyChanged("RoundCounter");
+            NotifyPropertyChanged("CurrentValue");
+            NotifyPropertyChanged("CurrentValueAngle");
+        }
+
+        public double TimeSinceStart
+        {
+            get
+            {
+                if (State == TimerState.Paused && _pauseStartTime != DateTime.MaxValue)
                 {
-                    _roundCounter = value;
-                    NotifyPropertyChanged("RoundCounter");
+                    return (_pauseStartTime - _startTime).TotalSeconds;
+                }
+                else
+                {
+                    return (DateTime.Now - _startTime).TotalSeconds;
                 }
             }
         }
 
-        public int CurrentValue
+        public double CurrentValue
         {
             get
             {
-                return _currentValue;
-            }
-            set
-            {
-                if (_currentValue != value)
-                {
-                    _currentValue = value;
-                    NotifyPropertyChanged("CurrentValue");
-                    NotifyPropertyChanged("CurrentValueAngle");
-                }
+                return (TimeSinceStart % RoundTime);
             }
         }
 
@@ -206,7 +301,7 @@ namespace Frequenzer.App.ViewModels
         {
             get
             {
-                return (1 - ((double)_currentValue / _roundTime)) * 360.0;
+                return ((double)TimeSinceStart / _roundTime) * 360.0;
             }
         }
 
@@ -228,6 +323,17 @@ namespace Frequenzer.App.ViewModels
         public ICommand ContinueCommand
         {
             get { return _continueCommand; }
+        }
+
+
+        public ICommand IncrementRoundTimeCommand
+        {
+            get { return _incrementRoundTimeCommand; }
+        }
+
+        public ICommand DecrementRoundTimeCommand
+        {
+            get { return _decrementRoundTimeCommand; }
         }
     }
 }

@@ -189,11 +189,29 @@ namespace Frequenzer.App.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die indicate end of round ähnelt.
+        /// </summary>
+        public static string IndicateRoundEnd {
+            get {
+                return ResourceManager.GetString("IndicateRoundEnd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die more apps ähnelt.
         /// </summary>
         public static string MoreApps {
             get {
                 return ResourceManager.GetString("MoreApps", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die prevent lock screen ähnelt.
+        /// </summary>
+        public static string PreventLockscreen {
+            get {
+                return ResourceManager.GetString("PreventLockscreen", resourceCulture);
             }
         }
         
@@ -265,6 +283,15 @@ namespace Frequenzer.App.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die read out number of rounds ähnelt.
+        /// </summary>
+        public static string ReadRoundCounter {
+            get {
+                return ResourceManager.GetString("ReadRoundCounter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die LeftToRight ähnelt.
         /// </summary>
         public static string ResourceFlowDirection {
@@ -279,6 +306,33 @@ namespace Frequenzer.App.Resources {
         public static string ResourceLanguage {
             get {
                 return ResourceManager.GetString("ResourceLanguage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die rounds ähnelt.
+        /// </summary>
+        public static string Rounds {
+            get {
+                return ResourceManager.GetString("Rounds", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die sec ähnelt.
+        /// </summary>
+        public static string Seconds {
+            get {
+                return ResourceManager.GetString("Seconds", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die settings ähnelt.
+        /// </summary>
+        public static string SettingsTitle {
+            get {
+                return ResourceManager.GetString("SettingsTitle", resourceCulture);
             }
         }
         

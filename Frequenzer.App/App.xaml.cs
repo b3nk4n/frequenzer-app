@@ -8,6 +8,8 @@ using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using Frequenzer.App.Resources;
 using PhoneKit.Framework.Support;
+using Frequenzer.App.ViewModels;
+using Ninject;
 
 namespace Frequenzer.App
 {
@@ -18,6 +20,8 @@ namespace Frequenzer.App
         /// </summary>
         /// <returns>Der Stammframe der Phone-Anwendung.</returns>
         public static PhoneApplicationFrame RootFrame { get; private set; }
+
+        public static IKernel Injector { get; private set; }
 
         /// <summary>
         /// Konstruktor für das Application-Objekt.
@@ -58,6 +62,7 @@ namespace Frequenzer.App
                 PhoneApplicationService.Current.UserIdleDetectionMode = IdleDetectionMode.Disabled;
             }
 
+            Injector = new StandardKernel(new MainModule());
         }
 
         // Code, der beim Starten der Anwendung ausgeführt werden soll (z. B. über "Start")
@@ -76,12 +81,21 @@ namespace Frequenzer.App
         // Dieser Code wird beim Schließen der Anwendung nicht ausgeführt
         private void Application_Deactivated(object sender, DeactivatedEventArgs e)
         {
+            Save();
         }
 
         // Code, der beim Schließen der Anwendung ausgeführt wird (z. B. wenn der Benutzer auf "Zurück" klickt)
         // Dieser Code wird beim Deaktivieren der Anwendung nicht ausgeführt
         private void Application_Closing(object sender, ClosingEventArgs e)
         {
+            Save();
+        }
+
+        private void Save()
+        {
+            IMainViewModel mainViewModel = Injector.Get<IMainViewModel>();
+            Settings.LastStartTimeInSeconds.Value = mainViewModel.StartTime;
+            Settings.LastPauseTimeInSeconds.Value = mainViewModel.PauseStartTime;
         }
 
         // Code, der bei einem Navigationsfehler ausgeführt wird

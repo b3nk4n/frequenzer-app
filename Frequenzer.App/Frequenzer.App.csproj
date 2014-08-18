@@ -95,6 +95,12 @@
     </Compile>
     <Compile Include="Controls\LocalizedAboutControl.cs" />
     <Compile Include="Controls\LocalizedFeedbackDialogControl.cs" />
+    <Compile Include="Controls\ThemedAboutControlBase.xaml.cs">
+      <DependentUpon>ThemedAboutControlBase.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SettingsPage.xaml.cs">
+      <DependentUpon>SettingsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Settings.cs" />
     <Compile Include="ViewModels\IMainViewModel.cs" />
     <Compile Include="LocalizedStrings.cs" />
@@ -118,11 +124,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
+    <Page Include="Controls\ThemedAboutControlBase.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\AboutPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\SettingsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

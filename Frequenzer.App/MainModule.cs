@@ -12,7 +12,7 @@ namespace Frequenzer.App
     {
         public override void Load()
         {
-            this.Bind<IMainViewModel>().To<MainViewModel>();
+            this.Bind<IMainViewModel>().To<MainViewModel>().InSingletonScope();
         }
     }
 }

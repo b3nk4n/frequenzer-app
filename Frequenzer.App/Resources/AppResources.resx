@@ -228,4 +228,28 @@ Showing us some love on the store helps us to continue to work on the app and ma
     <value>support and feedback</value>
     <comment>About Page</comment>
   </data>
+  <data name="SettingsTitle" xml:space="preserve">
+    <value>settings</value>
+    <comment>SettingsPage</comment>
+  </data>
+  <data name="IndicateRoundEnd" xml:space="preserve">
+    <value>indicate end of round</value>
+    <comment>SettingsPage</comment>
+  </data>
+  <data name="PreventLockscreen" xml:space="preserve">
+    <value>prevent lock screen</value>
+    <comment>SettingsPage</comment>
+  </data>
+  <data name="ReadRoundCounter" xml:space="preserve">
+    <value>read out number of rounds</value>
+    <comment>SettingsPage</comment>
+  </data>
+  <data name="Rounds" xml:space="preserve">
+    <value>rounds</value>
+    <comment>MainPage</comment>
+  </data>
+  <data name="Seconds" xml:space="preserve">
+    <value>sec</value>
+    <comment>MainPage</comment>
+  </data>
 </root>

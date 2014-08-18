@@ -1,4 +1,5 @@
-﻿using PhoneKit.Framework.Core.Storage;
+﻿using Frequenzer.App.ViewModels;
+using PhoneKit.Framework.Core.Storage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,8 +14,44 @@ namespace Frequenzer.App
     public static class Settings
     {
         /// <summary>
-        /// The last interval in seconds.
+        /// Whether the app prevents the lockscreen.
         /// </summary>
-        public static StoredObject<int> LastIntervalInSeconds = new StoredObject<int>("_lastIntervalInSeconds", 30);
+        public static StoredObject<bool> PreventLockScreen = new StoredObject<bool>("_preventLock", true);
+
+
+        /// <summary>
+        /// Whether the app runs under lockscreen.
+        /// </summary>
+        public static StoredObject<bool> RunUnderLockScreen = new StoredObject<bool>("_underLock", true);
+
+        /// <summary>
+        /// Whether the app should indicate the round end (silent peep on 3 and 2).
+        /// </summary>
+        public static StoredObject<bool> IndicateRoundEnd = new StoredObject<bool>("_indicateRoundEnd", true);
+
+        /// <summary>
+        /// Whether the app should read the round counter.
+        /// </summary>
+        public static StoredObject<bool> ReadRoundCounter = new StoredObject<bool>("_readRound", true);
+
+        /// <summary>
+        /// The round time in seconds.
+        /// </summary>
+        internal static StoredObject<double> LastRoundTimeInSeconds = new StoredObject<double>("_lastRoundTime", 30.0);
+
+        /// <summary>
+        /// The last timer state.
+        /// </summary>
+        internal static StoredObject<TimerState> LastTimerState = new StoredObject<TimerState>("_timerState", TimerState.Stopped);
+
+        /// <summary>
+        /// The start time in seconds.
+        /// </summary>
+        internal static StoredObject<DateTime> LastStartTimeInSeconds = new StoredObject<DateTime>("_lastStartTime", DateTime.MaxValue);
+
+        /// <summary>
+        /// The pause time in seconds.
+        /// </summary>
+        internal static StoredObject<DateTime> LastPauseTimeInSeconds = new StoredObject<DateTime>("_lastPauseTime", DateTime.MaxValue);
     }
 }

@@ -6,6 +6,13 @@ using System.Windows.Input;
 
 namespace Frequenzer.App.ViewModels
 {
+    public enum TimerState
+    {
+        Running,
+        Stopped,
+        Paused
+    }
+
     public interface IMainViewModel
     {
         void Start();
@@ -16,7 +23,15 @@ namespace Frequenzer.App.ViewModels
 
         void Continue();
 
-        int RoundTime { get; set; }
+        void UpdateCommands();
+
+        TimerState State { get; set; }
+
+        DateTime StartTime { get; set; }
+
+        DateTime PauseStartTime { get; set; }
+
+        double RoundTime { get; set; }
 
         double CurrentValueAngle { get; } 
 
@@ -27,5 +42,9 @@ namespace Frequenzer.App.ViewModels
         ICommand PauseCommand { get; }
 
         ICommand ContinueCommand { get; }
+
+        ICommand IncrementRoundTimeCommand { get; }
+
+        ICommand DecrementRoundTimeCommand { get; }
     }
 }
