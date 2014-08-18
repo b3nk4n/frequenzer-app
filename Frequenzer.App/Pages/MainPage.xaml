@@ -244,7 +244,7 @@
 					</Grid.RenderTransform>
 					<Ellipse Width="440" Height="440" Fill="{StaticResource PhoneForegroundBrush}" Stroke="{StaticResource PhoneBackgroundBrush}" StrokeThickness="40" />
                     <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-                        <TextBlock Text="123" FontSize="192" Margin="0,-16,0,-52" FontFamily="{StaticResource AppFont}" Foreground="{StaticResource PhoneBackgroundBrush}" HorizontalAlignment="Center"/>
+                        <TextBlock Text="{Binding RoundTime}" FontSize="192" Margin="0,-16,0,-52" FontFamily="{StaticResource AppFont}" Foreground="{StaticResource PhoneBackgroundBrush}" HorizontalAlignment="Center"/>
                         <TextBlock Text="{Binding Path=LocalizedResources.Seconds, Source={StaticResource LocalizedStrings}}" FontSize="58" FontFamily="{StaticResource AppFont}" Foreground="{StaticResource PhoneBackgroundBrush}" HorizontalAlignment="Center"/>
                     </StackPanel>
                     

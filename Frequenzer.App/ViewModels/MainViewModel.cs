@@ -237,7 +237,7 @@ namespace Frequenzer.App.ViewModels
         {
             get
             {
-                return (int)(TimeSinceStart / RoundTime);
+                return (int)Math.Max(TimeSinceStart / RoundTime, 0);
             }
         }
 
