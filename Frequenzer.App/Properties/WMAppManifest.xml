@@ -7,11 +7,6 @@
   <App xmlns="" ProductID="{0dc07807-1c98-431d-84c9-30b2e3384d37}" Title="Frequenzer" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="Frequenzer.App author" Description="A smart tool for repeating tasks, such as timelapse photography, sports and more." Publisher="Frequenzer.App" PublisherID="{1a4e9849-57c4-40a8-b4d3-bc49c84ab740}">
     <IconPath IsRelative="true" IsResource="false">Assets\ApplicationIcon.png</IconPath>
     <Capabilities>
-      <Capability Name="ID_CAP_NETWORKING" />
-      <Capability Name="ID_CAP_MEDIALIB_AUDIO" />
-      <Capability Name="ID_CAP_MEDIALIB_PLAYBACK" />
-      <Capability Name="ID_CAP_SENSORS" />
-      <Capability Name="ID_CAP_WEBBROWSERCOMPONENT" />
       <Capability Name="ID_CAP_SPEECH_RECOGNITION" />
       <Capability Name="ID_CAP_MICROPHONE" />
     </Capabilities>
