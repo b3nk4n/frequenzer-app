@@ -4,7 +4,7 @@
   <Languages xmlns="">
     <Language code="de" />
   </Languages>
-  <App xmlns="" ProductID="{0dc07807-1c98-431d-84c9-30b2e3384d37}" Title="Frequenzer" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="Frequenzer.App author" Description="A smart tool for repeating tasks, such as timelapse photography, sports and more." Publisher="Frequenzer.App" PublisherID="{1a4e9849-57c4-40a8-b4d3-bc49c84ab740}">
+  <App xmlns="" ProductID="{0dc07807-1c98-431d-84c9-30b2e3384d37}" Title="Frequenzer" RuntimeType="Silverlight" Version="1.1.0.0" Genre="apps.normal" Author="Benjamin Sautermeister" Description="A smart tool for repeating tasks, such as timelapse photography, sports and more." Publisher="bsautermeister" PublisherID="{1a4e9849-57c4-40a8-b4d3-bc49c84ab740}">
     <IconPath IsRelative="true" IsResource="false">Assets\ApplicationIcon.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_SPEECH_RECOGNITION" />

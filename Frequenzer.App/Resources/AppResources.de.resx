@@ -134,7 +134,7 @@
     <comment>AboutPage</comment>
   </data>
   <data name="ApplicationDescription" xml:space="preserve">
-    <value>Eine praktische App für vielerlei Zwecke, wie zum Beispiel Sport, Timelape-Photographie oder zum Lernen.</value>
+    <value>Eine praktische App für vielerlei Zwecke, wie zum Beispiel Sport, Party-Spiele, Timelape-Photographie oder zum Lernen.</value>
     <comment>AboutPage</comment>
   </data>
   <data name="ApplicationTitle" xml:space="preserve">
@@ -142,7 +142,7 @@
     <comment>General</comment>
   </data>
   <data name="ApplicationVersion" xml:space="preserve">
-    <value>1.0</value>
+    <value>1.1</value>
     <comment>General</comment>
   </data>
   <data name="Contributors" xml:space="preserve">
@@ -248,8 +248,12 @@ Das würde uns sehr motivieren um die App noch besser zu machen!</value>
     <value>runden</value>
     <comment>MainPage</comment>
   </data>
-  <data name="Seconds" xml:space="preserve">
-    <value>sek</value>
+  <data name="TimePerRound" xml:space="preserve">
+    <value>rundenzeit</value>
     <comment>MainPage</comment>
+  </data>
+  <data name="VibrationEnabled" xml:space="preserve">
+    <value>vibration aktiviert</value>
+    <comment>SettingsPage</comment>
   </data>
 </root>

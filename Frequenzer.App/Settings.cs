@@ -35,6 +35,11 @@ namespace Frequenzer.App
         public static StoredObject<bool> ReadRoundCounter = new StoredObject<bool>("_readRound", true);
 
         /// <summary>
+        /// Whether the vibration is enabled.
+        /// </summary>
+        public static StoredObject<bool> VibrationEnabled = new StoredObject<bool>("_vibration", true);
+
+        /// <summary>
         /// The round time in seconds.
         /// </summary>
         internal static StoredObject<double> LastRoundTimeInSeconds = new StoredObject<double>("_lastRoundTime", 30.0);

@@ -79,7 +79,7 @@ namespace Frequenzer.App.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die A smart tool for various kind of things, such as sports, timelapse photography or education. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die A smart tool for various kind of things, such as sports, party games, timelapse photography or education. ähnelt.
         /// </summary>
         public static string ApplicationDescription {
             get {
@@ -97,7 +97,7 @@ namespace Frequenzer.App.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die 1.0 ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die 1.1 ähnelt.
         /// </summary>
         public static string ApplicationVersion {
             get {
@@ -319,15 +319,6 @@ namespace Frequenzer.App.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die sec ähnelt.
-        /// </summary>
-        public static string Seconds {
-            get {
-                return ResourceManager.GetString("Seconds", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die settings ähnelt.
         /// </summary>
         public static string SettingsTitle {
@@ -342,6 +333,24 @@ namespace Frequenzer.App.Resources {
         public static string SupportAndFeedback {
             get {
                 return ResourceManager.GetString("SupportAndFeedback", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die lap time ähnelt.
+        /// </summary>
+        public static string TimePerRound {
+            get {
+                return ResourceManager.GetString("TimePerRound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die vibration enabled ähnelt.
+        /// </summary>
+        public static string VibrationEnabled {
+            get {
+                return ResourceManager.GetString("VibrationEnabled", resourceCulture);
             }
         }
     }

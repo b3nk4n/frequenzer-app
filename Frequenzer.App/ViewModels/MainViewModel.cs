@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework.Audio;
 using PhoneKit.Framework.Audio;
 using PhoneKit.Framework.Core.MVVM;
+using PhoneKit.Framework.OS;
 using PhoneKit.Framework.Voice;
 using System;
 using System.Diagnostics;
@@ -40,42 +41,95 @@ namespace Frequenzer.App.ViewModels
         private DelegateCommand _incrementRoundTimeCommand;
         private DelegateCommand _decrementRoundTimeCommand;
 
-        private const int TIME_FACTOR = 10;
+        /// <summary>
+        /// The number of ticks per second
+        /// </summary>
+        private const int TIME_FACTOR = 40;
+
+        /// <summary>
+        /// The current value of the last tick.
+        /// </summary>
+        private double _lastValue = -1.0;
+
+        /// <summary>
+        /// The current value millisecond part of the last tick.
+        /// </summary>
+        private double _lastValueMillisPart = -1.0;
 
         public MainViewModel()
         {
-            int lastSecValue = 0;
             _timer.Interval = TimeSpan.FromSeconds(1.0 / TIME_FACTOR);
-            _timer.Tick += async (s, e) =>
+            _timer.Tick += (s, e) =>
             {
-                UpdateTimer();
                 double current = CurrentValue;
+                double currentMillisPart = current - (int)current;
 
-                // check for change in second value
-                if (lastSecValue != (int)current)
+                // check second change
+                if (currentMillisPart < _lastValueMillisPart)
                 {
-                    lastSecValue = (int)current;
-                    if (current < 1 && TimeSinceStart > 1)
-                    {
-                        if (Settings.ReadRoundCounter.Value)
-                        {
-                            await Speech.Instance.Synthesizer.SpeakTextAsync(RoundCounter.ToString());
-                        }
-                        else
-                        {
-                            _alarmSound.Play(1.0f, -0.3f, 0.0f);
-                        }
-                    }
-                    else if (RoundTime >= 3 && current > RoundTime - 2 && Settings.IndicateRoundEnd.Value)
-                    {
-                        _alarmSound.Play(0.05f, -0.5f, 0.0f);
-                    }
+                    _lastValueMillisPart = currentMillisPart;
+                    FullSecondsEvent(current);
                 }
+
+                // check round change
+                if (current < _lastValue)
+                {
+                    _lastValue = current;
+                    RoundEndedEvent();
+                }
+
+                _lastValue = current;
+                _lastValueMillisPart = currentMillisPart;
+
+                // update ui
+                UpdateTimerUI();
+
             };
             RoundTime = Settings.LastRoundTimeInSeconds.Value;
 
             InitializeCommands();
             InitializeSounds();
+        }
+
+        /// <summary>
+        /// Called when a full seconds has elapsed.
+        /// </summary>
+        /// <param name="current">The current time value counting upwards.</param>
+        private void FullSecondsEvent(double current)
+        {
+            if (RoundTime >= 3 && current > RoundTime - 2 && Settings.IndicateRoundEnd.Value)
+            {
+                // pre-alarm
+                _alarmSound.Play(0.05f, -0.5f, 0.0f);
+            }
+        }
+
+        /// <summary>
+        /// Called when a round ends.
+        /// </summary>
+        private async void RoundEndedEvent()
+        {
+            if (Settings.VibrationEnabled.Value)
+            {
+                VibrationHelper.Vibrate(0.33);
+            }
+
+            if (Settings.ReadRoundCounter.Value && RoundTime >= 3)
+            {
+                try
+                {
+                    await Speech.Instance.Synthesizer.SpeakTextAsync(RoundCounter.ToString());
+                }
+                catch (Exception ex) // SPERR_SYSTEM_CALL_INTERRUPTED 0x80045508
+                {
+                    Debug.WriteLine(ex.Message);
+                }
+            }
+            else
+            {
+                // alarm
+                _alarmSound.Play(1.0f, -0.3f, 0.0f);
+            }
         }
 
         /// <summary>
@@ -132,26 +186,26 @@ namespace Frequenzer.App.ViewModels
 
             _incrementRoundTimeCommand = new DelegateCommand(() =>
             {
-                if (RoundTime < 999)
+                if (RoundTime < 3599)
                 {
                     RoundTime++;
                 }
                 UpdateCommands();
             }, () =>
             {
-                return RoundTime < 999;
+                return RoundTime < 3599;
             });
 
             _decrementRoundTimeCommand = new DelegateCommand(() =>
             {
-                if (RoundTime > 3)
+                if (RoundTime > 1)
                 {
                     RoundTime--;
                 }
                 UpdateCommands();
             }, () =>
             {
-                return RoundTime > 3;
+                return RoundTime > 1;
             });
         }
 
@@ -187,6 +241,7 @@ namespace Frequenzer.App.ViewModels
 
         public void Start()
         {
+            _lastValue = -1.0;
             StartTime = DateTime.Now;
             State = TimerState.Running;
         }
@@ -250,7 +305,7 @@ namespace Frequenzer.App.ViewModels
             set
             {
                 _startTime = value;
-                UpdateTimer();
+                UpdateTimerUI();
             }
         }
 
@@ -263,11 +318,11 @@ namespace Frequenzer.App.ViewModels
             set
             {
                 _pauseStartTime = value;
-                UpdateTimer();
+                UpdateTimerUI();
             }
         }
 
-        private void UpdateTimer()
+        private void UpdateTimerUI()
         {
             NotifyPropertyChanged("RoundCounter");
             NotifyPropertyChanged("CurrentValue");
@@ -301,7 +356,7 @@ namespace Frequenzer.App.ViewModels
         {
             get
             {
-                return ((double)TimeSinceStart / _roundTime) * 360.0;
+                return 10 + (CurrentValue / RoundTime) * 340.0;
             }
         }
 

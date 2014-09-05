@@ -10,13 +10,17 @@
     xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" xmlns:ec="clr-namespace:Microsoft.Expression.Interactivity.Core;assembly=Microsoft.Expression.Interactions" xmlns:Controls="clr-namespace:PhoneKit.Framework.Controls;assembly=PhoneKit.Framework"
     xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     xmlns:eim="clr-namespace:Microsoft.Expression.Interactivity.Media;assembly=Microsoft.Expression.Interactions"
+    xmlns:conv="clr-namespace:Frequenzer.App.Converters"
     x:Class="Frequenzer.App.MainPage"
     mc:Ignorable="d"
     SupportedOrientations="Portrait" Orientation="Portrait"
     shell:SystemTray.IsVisible="False">
 
     <phone:PhoneApplicationPage.Resources>
-		<ControlTemplate x:Key="EmptyButtonTemplate" TargetType="Button">
+        
+        <conv:CustomTimeConverter x:Key="customTimeConverter" />
+        
+		<ControlTemplate x:Key="EmptyButtonTemplate" TargetType="ButtonBase">
 			<Grid Margin="6">
                 <VisualStateManager.VisualStateGroups>
                     <VisualStateGroup x:Name="CommonStates">
@@ -114,7 +118,7 @@
 				<VisualStateGroup.Transitions>
 					<VisualTransition GeneratedDuration="0:0:1">
 						<VisualTransition.GeneratedEasingFunction>
-							<BackEase EasingMode="EaseInOut"/>
+							<BackEase EasingMode="EaseInOut" Amplitude="0.50"/>
 						</VisualTransition.GeneratedEasingFunction>
 					</VisualTransition>
 				</VisualStateGroup.Transitions>
@@ -129,7 +133,7 @@
 						<DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)" Storyboard.TargetName="TimerCircle" d:IsOptimized="True"/>
 						<DoubleAnimation Duration="0" To="0.25" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)" Storyboard.TargetName="RoundCircle" d:IsOptimized="True"/>
 						<DoubleAnimation Duration="0" To="0.25" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)" Storyboard.TargetName="RoundCircle" d:IsOptimized="True"/>
-						<DoubleAnimation Duration="0" To="-200" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="RoundCircle" d:IsOptimized="True"/>
+						<DoubleAnimation Duration="0" To="-190" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="RoundCircle" d:IsOptimized="True"/>
 						<DoubleAnimation Duration="0" To="-100" Storyboard.TargetProperty="(UIElement.Projection).(PlaneProjection.GlobalOffsetX)" Storyboard.TargetName="HelpButton" d:IsOptimized="True"/>
 						<DoubleAnimation Duration="0" To="-100" Storyboard.TargetProperty="(UIElement.Projection).(PlaneProjection.GlobalOffsetY)" Storyboard.TargetName="HelpButton" d:IsOptimized="True"/>
 						<DoubleAnimation Duration="0" To="100" Storyboard.TargetProperty="(UIElement.Projection).(PlaneProjection.GlobalOffsetX)" Storyboard.TargetName="SettingsButton" d:IsOptimized="True"/>
@@ -150,7 +154,7 @@
 						<DoubleAnimation Duration="0" To="0" Storyboard.TargetProperty="(UIElement.Projection).(PlaneProjection.RotationY)" Storyboard.TargetName="RoundCircle" d:IsOptimized="True"/>
 						<DoubleAnimation Duration="0" To="0.25" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)" Storyboard.TargetName="RoundCircle" d:IsOptimized="True"/>
 						<DoubleAnimation Duration="0" To="0.25" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)" Storyboard.TargetName="RoundCircle" d:IsOptimized="True"/>
-						<DoubleAnimation Duration="0" To="-200" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="RoundCircle" d:IsOptimized="True"/>
+						<DoubleAnimation Duration="0" To="-190" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="RoundCircle" d:IsOptimized="True"/>
 						<DoubleAnimation Duration="0" To="100" Storyboard.TargetProperty="(UIElement.Projection).(PlaneProjection.GlobalOffsetX)" Storyboard.TargetName="SettingsButton" d:IsOptimized="True"/>
 						<DoubleAnimation Duration="0" To="-100" Storyboard.TargetProperty="(UIElement.Projection).(PlaneProjection.GlobalOffsetY)" Storyboard.TargetName="SettingsButton" d:IsOptimized="True"/>
 						<DoubleAnimation Duration="0" To="-100" Storyboard.TargetProperty="(UIElement.Projection).(PlaneProjection.GlobalOffsetX)" Storyboard.TargetName="HelpButton" d:IsOptimized="True"/>
@@ -223,13 +227,13 @@
 					<Grid.RenderTransform>
 						<CompositeTransform ScaleX="0.05" ScaleY="0.05" TranslateY="-130"/>
 					</Grid.RenderTransform>
-					<expr:Arc x:Name="ArcFigure" ArcThickness="30" ArcThicknessUnit="Pixel"
-						Fill="{StaticResource PhoneForegroundBrush}" Height="400" Width="400" StartAngle="{Binding CurrentValueAngle}" EndAngle="360" />
                     <expr:Arc ArcThickness="30" ArcThicknessUnit="Pixel"
-						Fill="{StaticResource PhoneForegroundBrush}" Height="400" Width="400" StartAngle="0" EndAngle="360" Opacity="0.33"/>
+						Fill="{StaticResource PhoneAccentBrush}" Height="400" Width="400" StartAngle="10" EndAngle="350" Opacity="0.33"/>
+                    <expr:Arc x:Name="ArcFigure" ArcThickness="30" ArcThicknessUnit="Pixel"
+						Fill="{StaticResource PhoneAccentBrush}" Height="400" Width="400" StartAngle="{Binding CurrentValueAngle}" EndAngle="350" />
                     <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-                        <TextBlock Text="{Binding RoundCounter}" Margin="0,-16,0,-52"  FontSize="192" FontFamily="{StaticResource AppFont}" Foreground="{StaticResource PhoneForegroundBrush}" HorizontalAlignment="Center"/>
-                        <TextBlock Text="{Binding Path=LocalizedResources.Rounds, Source={StaticResource LocalizedStrings}}" FontSize="58" FontFamily="{StaticResource AppFont}" Foreground="{StaticResource PhoneForegroundBrush}" HorizontalAlignment="Center"/>
+                        <TextBlock Text="{Binding RoundCounter}" Margin="0,0,0,-32"  FontSize="156" FontFamily="{StaticResource AppFont}" Foreground="{StaticResource PhoneForegroundBrush}" HorizontalAlignment="Center"/>
+                        <TextBlock Text="{Binding Path=LocalizedResources.Rounds, Source={StaticResource LocalizedStrings}}" FontSize="48" FontFamily="{StaticResource AppFont}" Foreground="{StaticResource PhoneForegroundBrush}" HorizontalAlignment="Center"/>
                     </StackPanel>
 				</Grid>
                 
@@ -242,32 +246,33 @@
 					<Grid.RenderTransform>
 						<CompositeTransform/>
 					</Grid.RenderTransform>
-					<Ellipse Width="440" Height="440" Fill="{StaticResource PhoneForegroundBrush}" Stroke="{StaticResource PhoneBackgroundBrush}" StrokeThickness="40" />
+                    <Ellipse Width="440" Height="440" Fill="{StaticResource PhoneForegroundBrush}" Stroke="{StaticResource PhoneBackgroundBrush}" StrokeThickness="40" />
                     <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-                        <TextBlock Text="{Binding RoundTime}" FontSize="192" Margin="0,-16,0,-52" FontFamily="{StaticResource AppFont}" Foreground="{StaticResource PhoneBackgroundBrush}" HorizontalAlignment="Center"/>
-                        <TextBlock Text="{Binding Path=LocalizedResources.Seconds, Source={StaticResource LocalizedStrings}}" FontSize="58" FontFamily="{StaticResource AppFont}" Foreground="{StaticResource PhoneBackgroundBrush}" HorizontalAlignment="Center"/>
+                        <TextBlock Text="{Binding RoundTime, Converter={StaticResource customTimeConverter}}" FontSize="132" Margin="0,0,0,-32" FontFamily="{StaticResource AppFont}" Foreground="{StaticResource PhoneBackgroundBrush}" HorizontalAlignment="Center"/>
+                        <TextBlock Text="{Binding Path=LocalizedResources.TimePerRound, Source={StaticResource LocalizedStrings}}" FontSize="48" FontFamily="{StaticResource AppFont}" Foreground="{StaticResource PhoneBackgroundBrush}" HorizontalAlignment="Center"/>
                     </StackPanel>
                     
 				</Grid>
                 
                 <!-- round time adjustment buttons -->
-                <Button x:Name="button1" Width="102"  Height="102" Template="{StaticResource EmptyButtonTemplate}"
-                        Command="{Binding DecrementRoundTimeCommand}">
-                    <Button.Projection>
+                <RepeatButton x:Name="button1" Width="102"  Height="102" Template="{StaticResource EmptyButtonTemplate}"
+                        Command="{Binding DecrementRoundTimeCommand}" Delay="200" Interval="10">
+                    <RepeatButton.Projection>
                         <PlaneProjection LocalOffsetX="-200" />
-                    </Button.Projection>
+                    </RepeatButton.Projection>
                     <TextBlock Text="-" Foreground="{StaticResource PhoneBackgroundBrush}" FontFamily="{StaticResource AppFont}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="92"
                                Margin="-2,0,0,4"/>
-                </Button>
+                </RepeatButton>
 
-                <Button x:Name="button" Width="102"  Height="102" Template="{StaticResource EmptyButtonTemplate}"
-                        Command="{Binding IncrementRoundTimeCommand}">
-                    <Button.Projection>
+                <RepeatButton x:Name="button" Width="102"  Height="102" Template="{StaticResource EmptyButtonTemplate}"
+                        Command="{Binding IncrementRoundTimeCommand}" Delay="200" Interval="10">
+                    <RepeatButton.Projection>
                         <PlaneProjection LocalOffsetX="200" />
-                    </Button.Projection>
+                    </RepeatButton.Projection>
                     <TextBlock Text="+" Foreground="{StaticResource PhoneBackgroundBrush}" FontFamily="{StaticResource AppFont}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="92" 
                                Margin="-2,6,0,0"/>
-                </Button>
+                </RepeatButton>
+                
             </Grid>
 
             <Grid x:Name="ControlDialer" Grid.Row="2" Height="800" Width="800" HorizontalAlignment="Center">

@@ -98,6 +98,7 @@
     <Compile Include="Controls\ThemedAboutControlBase.xaml.cs">
       <DependentUpon>ThemedAboutControlBase.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\CustomTimeConverter.cs" />
     <Compile Include="Pages\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>
@@ -144,12 +145,6 @@
   <ItemGroup>
     <Content Include="Assets\ApplicationIconBlack.png" />
     <Content Include="Assets\Fonts\Comfortaa_Bold.ttf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\Fonts\Comfortaa_Regular.ttf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\Fonts\Comfortaa_Thin.ttf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="packages.config" />

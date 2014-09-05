@@ -26,6 +26,7 @@ namespace Frequenzer.App.Pages
             CheckBoxPreventLock.IsChecked = Settings.PreventLockScreen.Value;
             CheckBoxIndicateRoundEnd.IsChecked = Settings.IndicateRoundEnd.Value;
             CheckBoxReadRoundCounter.IsChecked = Settings.ReadRoundCounter.Value;
+            CheckBoxVibrationEnabled.IsChecked = Settings.VibrationEnabled.Value;
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
@@ -37,6 +38,7 @@ namespace Frequenzer.App.Pages
             Settings.PreventLockScreen.Value = CheckBoxPreventLock.IsChecked.Value;
             Settings.IndicateRoundEnd.Value = CheckBoxIndicateRoundEnd.IsChecked.Value;
             Settings.ReadRoundCounter.Value = CheckBoxReadRoundCounter.IsChecked.Value;
+            Settings.VibrationEnabled.Value = CheckBoxVibrationEnabled.IsChecked.Value;
         }
     }
 }

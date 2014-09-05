@@ -134,7 +134,7 @@
     <comment>AboutPage</comment>
   </data>
   <data name="ApplicationDescription" xml:space="preserve">
-    <value>A smart tool for various kind of things, such as sports, timelapse photography or education.</value>
+    <value>A smart tool for various kind of things, such as sports, party games, timelapse photography or education.</value>
     <comment>AboutPage</comment>
   </data>
   <data name="ApplicationTitle" xml:space="preserve">
@@ -142,7 +142,7 @@
     <comment>General</comment>
   </data>
   <data name="ApplicationVersion" xml:space="preserve">
-    <value>1.0</value>
+    <value>1.1</value>
     <comment>General</comment>
   </data>
   <data name="Contributors" xml:space="preserve">
@@ -248,8 +248,12 @@ Showing us some love on the store helps us to continue to work on the app and ma
     <value>rounds</value>
     <comment>MainPage</comment>
   </data>
-  <data name="Seconds" xml:space="preserve">
-    <value>sec</value>
+  <data name="VibrationEnabled" xml:space="preserve">
+    <value>vibration enabled</value>
+    <comment>SettingsPage</comment>
+  </data>
+  <data name="TimePerRound" xml:space="preserve">
+    <value>lap time</value>
     <comment>MainPage</comment>
   </data>
 </root>
