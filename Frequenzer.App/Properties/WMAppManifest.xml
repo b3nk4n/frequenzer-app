@@ -3,6 +3,7 @@
   <DefaultLanguage xmlns="" code="en" />
   <Languages xmlns="">
     <Language code="de" />
+    <Language code="fr" />
   </Languages>
   <App xmlns="" ProductID="{0dc07807-1c98-431d-84c9-30b2e3384d37}" Title="Frequenzer" RuntimeType="Silverlight" Version="1.1.0.0" Genre="apps.normal" Author="Benjamin Sautermeister" Description="A smart tool for repeating tasks, such as timelapse photography, sports and more." Publisher="bsautermeister" PublisherID="{1a4e9849-57c4-40a8-b4d3-bc49c84ab740}">
     <IconPath IsRelative="true" IsResource="false">Assets\ApplicationIcon.png</IconPath>
@@ -20,18 +21,13 @@
           <Count>0</Count>
           <BackgroundImageURI IsRelative="true" IsResource="false">Assets\Tiles\FlipCycleTileMedium.png</BackgroundImageURI>
           <Title>Frequenzer</Title>
-          <BackContent>
-          </BackContent>
-          <BackBackgroundImageURI>
-          </BackBackgroundImageURI>
-          <BackTitle>
-          </BackTitle>
+          <BackContent></BackContent>
+          <BackBackgroundImageURI></BackBackgroundImageURI>
+          <BackTitle></BackTitle>
           <LargeBackgroundImageURI IsRelative="true" IsResource="false">Assets\Tiles\FlipCycleTileLarge.png</LargeBackgroundImageURI>
           <LargeBackContent />
-          <LargeBackBackgroundImageURI IsRelative="true" IsResource="false">
-          </LargeBackBackgroundImageURI>
-          <DeviceLockImageURI>
-          </DeviceLockImageURI>
+          <LargeBackBackgroundImageURI IsRelative="true" IsResource="false"></LargeBackBackgroundImageURI>
+          <DeviceLockImageURI></DeviceLockImageURI>
           <HasLarge>True</HasLarge>
         </TemplateFlip>
       </PrimaryToken>

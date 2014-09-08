@@ -30,7 +30,7 @@ namespace Frequenzer.App
             {
                 FeedbackManager.Instance.StartFirst();
             });
-            StartupActionManager.Instance.Register(10, ActionExecutionRule.Equals, () =>
+            StartupActionManager.Instance.Register(15, ActionExecutionRule.Equals, () =>
             {
                 FeedbackManager.Instance.StartSecond();
             });
@@ -49,7 +49,7 @@ namespace Frequenzer.App
             ApplySettings();
 
             // fire startup events
-            StartupActionManager.Instance.Fire();
+            StartupActionManager.Instance.Fire(e);
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)

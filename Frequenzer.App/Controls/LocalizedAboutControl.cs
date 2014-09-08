@@ -45,6 +45,7 @@ namespace Frequenzer.App.Controls
             ContributorsListVisibility = System.Windows.Visibility.Visible;
             IList<ContributorModel> contributors = new List<ContributorModel>();
             contributors.Add(new ContributorModel("/Assets/Images/font.png", "Johan Aakerlund"));
+            contributors.Add(new ContributorModel("/Assets/Languages/french.png", "Vincent Vuillaume"));
             SetContributorsList(contributors);
         }
     }
