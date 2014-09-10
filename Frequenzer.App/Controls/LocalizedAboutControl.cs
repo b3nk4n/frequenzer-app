@@ -46,6 +46,7 @@ namespace Frequenzer.App.Controls
             IList<ContributorModel> contributors = new List<ContributorModel>();
             contributors.Add(new ContributorModel("/Assets/Images/font.png", "Johan Aakerlund"));
             contributors.Add(new ContributorModel("/Assets/Languages/french.png", "Vincent Vuillaume"));
+            contributors.Add(new ContributorModel("/Assets/Languages/portuguese_br.png", "João Vitório Dagostin"));
             SetContributorsList(contributors);
         }
     }

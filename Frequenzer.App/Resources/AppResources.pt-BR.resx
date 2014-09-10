@@ -122,19 +122,19 @@
     <comment>Controls the FlowDirection for all elements in the RootFrame. Set to the traditional direction of this resource file's language</comment>
   </data>
   <data name="ResourceLanguage" xml:space="preserve">
-    <value>fr</value>
+    <value>pt-BR</value>
     <comment>Controls the Language and ensures that the font for all elements in the RootFrame aligns with the app's language. Set to the language code of this resource file's language.</comment>
   </data>
   <data name="AboutTitle" xml:space="preserve">
-    <value>à propos</value>
+    <value>sobre</value>
     <comment>AboutPage</comment>
   </data>
   <data name="ApplicationAuthor" xml:space="preserve">
-    <value>par Benjamin Sautermeister</value>
+    <value>por Benjamin Sautermeister</value>
     <comment>AboutPage</comment>
   </data>
   <data name="ApplicationDescription" xml:space="preserve">
-    <value>Un outil intelligent et pratique pour un tas d'activités, telles que le sport, les jeux de société, les photos en time lapse ou l'éducation.</value>
+    <value>Uma ferramenta inteligente para todos os tipos de coisas, como esportes, jogos, fotografia ou educação.</value>
     <comment>AboutPage</comment>
   </data>
   <data name="ApplicationTitle" xml:space="preserve">
@@ -146,11 +146,11 @@
     <comment>General</comment>
   </data>
   <data name="Contributors" xml:space="preserve">
-    <value>Bénévole</value>
+    <value>Colaboradores</value>
     <comment>AboutPage</comment>
   </data>
   <data name="FeedbackBodyText" xml:space="preserve">
-    <value>[Votre feedback ici]
+    <value>[Your feedback here]
 
 
 ---------------------------------
@@ -167,93 +167,93 @@ Application Version: {4}
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="FeedbackMessageText" xml:space="preserve">
-    <value>Désolé d'apprendre que vous ne voulez pas évaluer Frequenzer.
+    <value>Lamento saber que você não quer avaliar o Frequenzer.
 
-Dites-nous ce que vous en pensez ou faites-nous des suggestions pour améliorer notre application.</value>
+Conte-nos sobre a sua experiência ou sugira como podemos melhorá-lo.</value>
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="FeedbackNoText" xml:space="preserve">
-    <value>non, merci</value>
+    <value>não, obrigado</value>
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="FeedbackSubject" xml:space="preserve">
-    <value>Retour client Frequenzer</value>
+    <value>Frequenzer Feedback</value>
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="FeedbackTitleText" xml:space="preserve">
-    <value>Pouvons-nous faire mieux?</value>
+    <value>Como podemos melhorar?</value>
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="FeedbackYesText" xml:space="preserve">
-    <value>donnez votre avis</value>
+    <value>enviar feedback</value>
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="MoreApps" xml:space="preserve">
-    <value>plus d'apps</value>
+    <value>mais aplicativos</value>
     <comment>AboutPage</comment>
   </data>
   <data name="PrivacyInfo" xml:space="preserve">
-    <value>confidentialité</value>
+    <value>informações de privacidade</value>
     <comment>About Page</comment>
   </data>
   <data name="RateAndReview" xml:space="preserve">
-    <value>évaluez et donnez votre avis</value>
+    <value>classificar e dar opinião</value>
     <comment>AboutPage</comment>
   </data>
   <data name="RatingMessage10Text" xml:space="preserve">
-    <value>Il semble que vous utilisez beaucoup notre application!
+    <value>Você parece estar gostando deste aplicativo!
 
-Pourquoi ne pas donner 5 étoiles pour exprimer votre satisfaction?</value>
+Por que não avaliar com 5 estrelas para mostrar o quanto você está gostando?</value>
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="RatingMessage5Text" xml:space="preserve">
-    <value>Merci d'attribuer 5 étoiles à notre app.
+    <value>Adoraríamos que você classificasse este aplicativo com 5 estrelas.
 
-Votre soutien sur le Store nous aide à améliorer sans cesse notre app!</value>
+Mostre o seu interesse na loja e ajude-nos a continuar trabalhando para tornar este aplicativo ainda melhor!</value>
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="RatingNoText" xml:space="preserve">
-    <value>non, merci</value>
+    <value>não, obrigado</value>
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="RatingTitleText" xml:space="preserve">
-    <value>Frequenzer vous plaît?</value>
+    <value>Gostando do Frequenzer?</value>
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="RatingYesText" xml:space="preserve">
-    <value>attribuez-lui 5 étoiles</value>
+    <value>avaliar com 5 estrelas</value>
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="SupportAndFeedback" xml:space="preserve">
-    <value>support et feedback</value>
+    <value>suporte e feedback</value>
     <comment>About Page</comment>
   </data>
   <data name="SettingsTitle" xml:space="preserve">
-    <value>paramètres</value>
+    <value>configurações</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="IndicateRoundEnd" xml:space="preserve">
-    <value>indiquer la fin du tour</value>
+    <value>indicar fim da rodada</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="PreventLockscreen" xml:space="preserve">
-    <value>empêcher le verrouillage de l'écran</value>
+    <value>evitar o bloqueio da tela</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="ReadRoundCounter" xml:space="preserve">
-    <value>affiché le nombre de tours</value>
+    <value>ler o número de rodadas</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="Rounds" xml:space="preserve">
-    <value>tours</value>
+    <value>rodadas</value>
     <comment>MainPage</comment>
   </data>
   <data name="VibrationEnabled" xml:space="preserve">
-    <value>vibration activée</value>
+    <value>ativar vibração</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="TimePerRound" xml:space="preserve">
-    <value>temps du tour</value>
+    <value>tempo da volta</value>
     <comment>MainPage</comment>
   </data>
 </root>
