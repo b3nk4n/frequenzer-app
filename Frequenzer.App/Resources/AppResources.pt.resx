@@ -117,14 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ResourceFlowDirection" xml:space="preserve">
-    <value>LeftToRight</value>
-    <comment>Controls the FlowDirection for all elements in the RootFrame. Set to the traditional direction of this resource file's language</comment>
-  </data>
-  <data name="ResourceLanguage" xml:space="preserve">
-    <value>pt-BR</value>
-    <comment>Controls the Language and ensures that the font for all elements in the RootFrame aligns with the app's language. Set to the language code of this resource file's language.</comment>
-  </data>
   <data name="AboutTitle" xml:space="preserve">
     <value>sobre</value>
     <comment>AboutPage</comment>
@@ -188,9 +180,17 @@ Conte-nos sobre a sua experiência ou sugira como podemos melhorá-lo.</value>
     <value>enviar feedback</value>
     <comment>FeedbackDialogControl</comment>
   </data>
+  <data name="IndicateRoundEnd" xml:space="preserve">
+    <value>indicar fim da rodada</value>
+    <comment>SettingsPage</comment>
+  </data>
   <data name="MoreApps" xml:space="preserve">
     <value>mais aplicativos</value>
     <comment>AboutPage</comment>
+  </data>
+  <data name="PreventLockscreen" xml:space="preserve">
+    <value>evitar o bloqueio da tela</value>
+    <comment>SettingsPage</comment>
   </data>
   <data name="PrivacyInfo" xml:space="preserve">
     <value>informações de privacidade</value>
@@ -224,36 +224,36 @@ Mostre o seu interesse na loja e ajude-nos a continuar trabalhando para tornar e
     <value>avaliar com 5 estrelas</value>
     <comment>FeedbackDialogControl</comment>
   </data>
-  <data name="SupportAndFeedback" xml:space="preserve">
-    <value>suporte e feedback</value>
-    <comment>About Page</comment>
-  </data>
-  <data name="SettingsTitle" xml:space="preserve">
-    <value>configurações</value>
-    <comment>SettingsPage</comment>
-  </data>
-  <data name="IndicateRoundEnd" xml:space="preserve">
-    <value>indicar fim da rodada</value>
-    <comment>SettingsPage</comment>
-  </data>
-  <data name="PreventLockscreen" xml:space="preserve">
-    <value>evitar o bloqueio da tela</value>
-    <comment>SettingsPage</comment>
-  </data>
   <data name="ReadRoundCounter" xml:space="preserve">
     <value>ler o número de rodadas</value>
     <comment>SettingsPage</comment>
+  </data>
+  <data name="ResourceFlowDirection" xml:space="preserve">
+    <value>LeftToRight</value>
+    <comment>Controls the FlowDirection for all elements in the RootFrame. Set to the traditional direction of this resource file's language</comment>
+  </data>
+  <data name="ResourceLanguage" xml:space="preserve">
+    <value>pt</value>
+    <comment>Controls the Language and ensures that the font for all elements in the RootFrame aligns with the app's language. Set to the language code of this resource file's language.</comment>
   </data>
   <data name="Rounds" xml:space="preserve">
     <value>rodadas</value>
     <comment>MainPage</comment>
   </data>
-  <data name="VibrationEnabled" xml:space="preserve">
-    <value>ativar vibração</value>
+  <data name="SettingsTitle" xml:space="preserve">
+    <value>configurações</value>
     <comment>SettingsPage</comment>
+  </data>
+  <data name="SupportAndFeedback" xml:space="preserve">
+    <value>suporte e feedback</value>
+    <comment>About Page</comment>
   </data>
   <data name="TimePerRound" xml:space="preserve">
     <value>tempo da volta</value>
     <comment>MainPage</comment>
+  </data>
+  <data name="VibrationEnabled" xml:space="preserve">
+    <value>ativar vibração</value>
+    <comment>SettingsPage</comment>
   </data>
 </root>
