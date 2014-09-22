@@ -97,7 +97,7 @@ namespace Frequenzer.App.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die 1.1.1 ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die 1.2 ähnelt.
         /// </summary>
         public static string ApplicationVersion {
             get {
@@ -324,6 +324,15 @@ namespace Frequenzer.App.Resources {
         public static string SettingsTitle {
             get {
                 return ResourceManager.GetString("SettingsTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die sound enabled ähnelt.
+        /// </summary>
+        public static string SoundEnabled {
+            get {
+                return ResourceManager.GetString("SoundEnabled", resourceCulture);
             }
         }
         

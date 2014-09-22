@@ -142,7 +142,7 @@
     <comment>General</comment>
   </data>
   <data name="ApplicationVersion" xml:space="preserve">
-    <value>1.1.1</value>
+    <value>1.2</value>
     <comment>General</comment>
   </data>
   <data name="Contributors" xml:space="preserve">
@@ -254,6 +254,10 @@ Das würde uns sehr motivieren um die App noch besser zu machen!</value>
   </data>
   <data name="VibrationEnabled" xml:space="preserve">
     <value>vibration aktiviert</value>
+    <comment>SettingsPage</comment>
+  </data>
+  <data name="SoundEnabled" xml:space="preserve">
+    <value>sound aktiviert</value>
     <comment>SettingsPage</comment>
   </data>
 </root>

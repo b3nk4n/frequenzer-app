@@ -97,10 +97,13 @@ namespace Frequenzer.App.ViewModels
         /// <param name="current">The current time value counting upwards.</param>
         private void FullSecondsEvent(double current)
         {
-            if (RoundTime >= 3 && current > RoundTime - 2 && Settings.IndicateRoundEnd.Value)
+            if (Settings.SoundEnabled.Value)
             {
-                // pre-alarm
-                _alarmSound.Play(0.05f, -0.5f, 0.0f);
+                if (RoundTime >= 3 && current > RoundTime - 2 && Settings.IndicateRoundEnd.Value)
+                {
+                    // pre-alarm
+                    _alarmSound.Play(0.05f, -0.5f, 0.0f);
+                }
             }
         }
 
@@ -114,22 +117,26 @@ namespace Frequenzer.App.ViewModels
                 VibrationHelper.Vibrate(0.33);
             }
 
-            if (Settings.ReadRoundCounter.Value && RoundTime >= 3)
+            if (Settings.SoundEnabled.Value)
             {
-                try
+                if (Settings.ReadRoundCounter.Value && RoundTime >= 3)
                 {
-                    await Speech.Instance.Synthesizer.SpeakTextAsync(RoundCounter.ToString());
+                    try
+                    {
+                        await Speech.Instance.Synthesizer.SpeakTextAsync(RoundCounter.ToString());
+                    }
+                    catch (Exception ex) // SPERR_SYSTEM_CALL_INTERRUPTED 0x80045508
+                    {
+                        Debug.WriteLine(ex.Message);
+                    }
                 }
-                catch (Exception ex) // SPERR_SYSTEM_CALL_INTERRUPTED 0x80045508
+                else
                 {
-                    Debug.WriteLine(ex.Message);
+                    // alarm
+                    _alarmSound.Play(1.0f, -0.3f, 0.0f);
                 }
             }
-            else
-            {
-                // alarm
-                _alarmSound.Play(1.0f, -0.3f, 0.0f);
-            }
+            
         }
 
         /// <summary>

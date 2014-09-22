@@ -24,6 +24,7 @@ namespace Frequenzer.App.Pages
             // load settings
             //CheckBoxRunUnderLock.IsChecked = Settings.RunUnderLockScreen.Value;
             CheckBoxPreventLock.IsChecked = Settings.PreventLockScreen.Value;
+            CheckBoxSoundEnabled.IsChecked = Settings.SoundEnabled.Value;
             CheckBoxIndicateRoundEnd.IsChecked = Settings.IndicateRoundEnd.Value;
             CheckBoxReadRoundCounter.IsChecked = Settings.ReadRoundCounter.Value;
             CheckBoxVibrationEnabled.IsChecked = Settings.VibrationEnabled.Value;
@@ -36,6 +37,7 @@ namespace Frequenzer.App.Pages
             // save settings
             //Settings.RunUnderLockScreen.Value = CheckBoxRunUnderLock.IsChecked.Value;
             Settings.PreventLockScreen.Value = CheckBoxPreventLock.IsChecked.Value;
+            Settings.SoundEnabled.Value = CheckBoxSoundEnabled.IsChecked.Value;
             Settings.IndicateRoundEnd.Value = CheckBoxIndicateRoundEnd.IsChecked.Value;
             Settings.ReadRoundCounter.Value = CheckBoxReadRoundCounter.IsChecked.Value;
             Settings.VibrationEnabled.Value = CheckBoxVibrationEnabled.IsChecked.Value;

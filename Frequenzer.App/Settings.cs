@@ -40,6 +40,11 @@ namespace Frequenzer.App
         public static StoredObject<bool> VibrationEnabled = new StoredObject<bool>("_vibration", true);
 
         /// <summary>
+        /// Whether the sound is enabled.
+        /// </summary>
+        public static StoredObject<bool> SoundEnabled = new StoredObject<bool>("_sound", true);
+
+        /// <summary>
         /// The round time in seconds.
         /// </summary>
         internal static StoredObject<double> LastRoundTimeInSeconds = new StoredObject<double>("_lastRoundTime", 30.0);

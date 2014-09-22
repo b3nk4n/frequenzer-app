@@ -122,19 +122,19 @@
     <comment>Controls the FlowDirection for all elements in the RootFrame. Set to the traditional direction of this resource file's language</comment>
   </data>
   <data name="ResourceLanguage" xml:space="preserve">
-    <value>en</value>
+    <value>it</value>
     <comment>Controls the Language and ensures that the font for all elements in the RootFrame aligns with the app's language. Set to the language code of this resource file's language.</comment>
   </data>
   <data name="AboutTitle" xml:space="preserve">
-    <value>about</value>
+    <value>supporto</value>
     <comment>AboutPage</comment>
   </data>
   <data name="ApplicationAuthor" xml:space="preserve">
-    <value>by Benjamin Sautermeister</value>
+    <value>di Benjamin Sautermeister</value>
     <comment>AboutPage</comment>
   </data>
   <data name="ApplicationDescription" xml:space="preserve">
-    <value>A smart tool for various kind of things, such as sports, party games, timelapse photography or education.</value>
+    <value>Un piccolo tool per vari utilizzi, come lo sport, i giochi di società, le foto temporizzate o lo studio.</value>
     <comment>AboutPage</comment>
   </data>
   <data name="ApplicationTitle" xml:space="preserve">
@@ -146,7 +146,7 @@
     <comment>General</comment>
   </data>
   <data name="Contributors" xml:space="preserve">
-    <value>Contributors</value>
+    <value>Collaboratori</value>
     <comment>AboutPage</comment>
   </data>
   <data name="FeedbackBodyText" xml:space="preserve">
@@ -167,97 +167,97 @@ Application Version: {4}
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="FeedbackMessageText" xml:space="preserve">
-    <value>Sorry to hear you didn't want to rate our app
+    <value>Peccato tu non voglia votare Frequenzer.
 
-Tell us about your experience or suggest how we can make it even better.</value>
+Raccontaci la tua esperienza o suggeriscici come potremmo migliorare questa app.</value>
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="FeedbackNoText" xml:space="preserve">
-    <value>no thanks</value>
+    <value>no grazie</value>
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="FeedbackSubject" xml:space="preserve">
-    <value>Frequenzer Customer Feedback </value>
+    <value>Feedback per Frequenzer</value>
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="FeedbackTitleText" xml:space="preserve">
-    <value>Can we make it better?</value>
+    <value>Possiamo migliorare?</value>
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="FeedbackYesText" xml:space="preserve">
-    <value>give feedback</value>
+    <value>feedback</value>
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="MoreApps" xml:space="preserve">
-    <value>more apps</value>
+    <value>più app</value>
     <comment>AboutPage</comment>
   </data>
   <data name="PrivacyInfo" xml:space="preserve">
-    <value>privacy info</value>
+    <value>info privacy</value>
     <comment>About Page</comment>
   </data>
   <data name="RateAndReview" xml:space="preserve">
-    <value>rate and review</value>
+    <value>dai un giudizio</value>
     <comment>AboutPage</comment>
   </data>
   <data name="RatingMessage10Text" xml:space="preserve">
-    <value>You look to be getting a lot of use out of our application!
+    <value>Sembra che la nostra applicazione ti piaccaia!
 
-Why not give us a 5 star rating to show your appreciation?</value>
+Perché non darci 5 stelle di votazione per mostrarci il tuo apprezzamento?</value>
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="RatingMessage5Text" xml:space="preserve">
-    <value>We'd love you to rate our app 5 stars
+    <value>Abbiamo apprezzato le 5 stelle concesseci.
 
-Showing us some love on the store helps us to continue to work on the app and make things even better!</value>
+Mostrandoci apprezzamento sullo store, ci aiuterai a proseguire il nostro lavoro per migliorare sempre più!</value>
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="RatingNoText" xml:space="preserve">
-    <value>no thanks</value>
+    <value>no grazie</value>
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="RatingTitleText" xml:space="preserve">
-    <value>Enjoying our app?</value>
+    <value>Ti piace Frequenzer?</value>
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="RatingYesText" xml:space="preserve">
-    <value>rate 5 stars</value>
+    <value>votala</value>
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="SupportAndFeedback" xml:space="preserve">
-    <value>support and feedback</value>
+    <value>supporto e feedback</value>
     <comment>About Page</comment>
   </data>
   <data name="SettingsTitle" xml:space="preserve">
-    <value>settings</value>
+    <value>impostazioni</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="IndicateRoundEnd" xml:space="preserve">
-    <value>indicate end of round</value>
+    <value>indica la fine del crono-ciclo</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="PreventLockscreen" xml:space="preserve">
-    <value>prevent lock screen</value>
+    <value>non abilitare il blocco schermo</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="ReadRoundCounter" xml:space="preserve">
-    <value>read out number of rounds</value>
+    <value>leggi il numero dei crono-cicli</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="Rounds" xml:space="preserve">
-    <value>rounds</value>
+    <value>crono-cicli</value>
     <comment>MainPage</comment>
   </data>
   <data name="VibrationEnabled" xml:space="preserve">
-    <value>vibration enabled</value>
+    <value>vibrazione abilitata</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="TimePerRound" xml:space="preserve">
-    <value>lap time</value>
+    <value>tempo sul giro</value>
     <comment>MainPage</comment>
   </data>
   <data name="SoundEnabled" xml:space="preserve">
-    <value>sound enabled</value>
+    <value>suono attivato</value>
     <comment>SettingsPage</comment>
   </data>
 </root>

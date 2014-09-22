@@ -195,8 +195,9 @@
             <StackPanel>
                 <!--<CheckBox x:Name="CheckBoxRunUnderLock" Content="Hinter dem Sperrbildschirm ausführen" FontFamily="{StaticResource AppFont}" Style="{StaticResource RoundCheckBoxStyle}" />-->
                 <CheckBox x:Name="CheckBoxPreventLock" Content="{Binding Path=LocalizedResources.PreventLockscreen, Source={StaticResource LocalizedStrings}}" FontFamily="{StaticResource AppFont}" Style="{StaticResource RoundCheckBoxStyle}" />
-                <CheckBox x:Name="CheckBoxIndicateRoundEnd" Content="{Binding Path=LocalizedResources.IndicateRoundEnd, Source={StaticResource LocalizedStrings}}" FontFamily="{StaticResource AppFont}" Style="{StaticResource RoundCheckBoxStyle}" />
-                <CheckBox x:Name="CheckBoxReadRoundCounter" Content="{Binding Path=LocalizedResources.ReadRoundCounter, Source={StaticResource LocalizedStrings}}" FontFamily="{StaticResource AppFont}" Style="{StaticResource RoundCheckBoxStyle}" />
+                <CheckBox x:Name="CheckBoxSoundEnabled" Content="{Binding Path=LocalizedResources.SoundEnabled, Source={StaticResource LocalizedStrings}}" FontFamily="{StaticResource AppFont}" Style="{StaticResource RoundCheckBoxStyle}" />
+                <CheckBox x:Name="CheckBoxIndicateRoundEnd" Content="{Binding Path=LocalizedResources.IndicateRoundEnd, Source={StaticResource LocalizedStrings}}" FontFamily="{StaticResource AppFont}" Style="{StaticResource RoundCheckBoxStyle}" IsEnabled="{Binding ElementName=CheckBoxSoundEnabled, Path=IsChecked}" />
+                <CheckBox x:Name="CheckBoxReadRoundCounter" Content="{Binding Path=LocalizedResources.ReadRoundCounter, Source={StaticResource LocalizedStrings}}" FontFamily="{StaticResource AppFont}" Style="{StaticResource RoundCheckBoxStyle}" IsEnabled="{Binding ElementName=CheckBoxSoundEnabled, Path=IsChecked}"/>
                 <CheckBox x:Name="CheckBoxVibrationEnabled" Content="{Binding Path=LocalizedResources.VibrationEnabled, Source={StaticResource LocalizedStrings}}" FontFamily="{StaticResource AppFont}" Style="{StaticResource RoundCheckBoxStyle}" />
             </StackPanel>
         </Grid>
