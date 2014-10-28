@@ -122,19 +122,19 @@
     <comment>Controls the FlowDirection for all elements in the RootFrame. Set to the traditional direction of this resource file's language</comment>
   </data>
   <data name="ResourceLanguage" xml:space="preserve">
-    <value>en</value>
+    <value>es</value>
     <comment>Controls the Language and ensures that the font for all elements in the RootFrame aligns with the app's language. Set to the language code of this resource file's language.</comment>
   </data>
   <data name="AboutTitle" xml:space="preserve">
-    <value>about</value>
+    <value>acerca de</value>
     <comment>AboutPage</comment>
   </data>
   <data name="ApplicationAuthor" xml:space="preserve">
-    <value>by Benjamin Sautermeister</value>
+    <value>por Benjamin Sautermeister</value>
     <comment>AboutPage</comment>
   </data>
   <data name="ApplicationDescription" xml:space="preserve">
-    <value>A smart tool for various kind of things, such as sports, party games, timelapse photography or education.</value>
+    <value>Una herramienta inteligente para diferentes tipos de cosas, tales como deportes, juegos de mesa, lapsos de tiempo para fotografía o educación.</value>
     <comment>AboutPage</comment>
   </data>
   <data name="ApplicationTitle" xml:space="preserve">
@@ -146,19 +146,19 @@
     <comment>General</comment>
   </data>
   <data name="Contributors" xml:space="preserve">
-    <value>Contributors</value>
+    <value>Colaboradores</value>
     <comment>AboutPage</comment>
   </data>
   <data name="FeedbackBodyText" xml:space="preserve">
-    <value>[Your feedback here]
+    <value>[Su opinión Aquí]
 
 
 ---------------------------------
-Device Name: {0}
-Device Manufacturer: {1}
-Device Firmware Version: {2}
-Device Hardware Version: {3}
-Application Version: {4}
+Nombre del dispositivo: {0}
+Fabricante del dispositivo: {1}
+Versión del Firmware del dispositivo: {2}
+Versión del Hardware del dispositivo: {3}
+Versión de la aplicación: {4}
 ---------------------------------</value>
     <comment>FeedbackDialogControl</comment>
   </data>
@@ -167,93 +167,93 @@ Application Version: {4}
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="FeedbackMessageText" xml:space="preserve">
-    <value>Sorry to hear you didn't want to rate our app
+    <value>Sentimos que no quieras puntuar Frequenzer.
 
-Tell us about your experience or suggest how we can make it even better.</value>
+Dinos sobre tu experiencia o sugiere como podemos hacerlo incluso mejor.</value>
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="FeedbackNoText" xml:space="preserve">
-    <value>no thanks</value>
+    <value>no gracias</value>
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="FeedbackSubject" xml:space="preserve">
-    <value>Frequenzer Customer Feedback </value>
+    <value>Frequenzer Comentarios del Cliente</value>
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="FeedbackTitleText" xml:space="preserve">
-    <value>Can we make it better?</value>
+    <value>¿Podemos hacerlo mejor?</value>
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="FeedbackYesText" xml:space="preserve">
-    <value>give feedback</value>
+    <value>comentario</value>
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="MoreApps" xml:space="preserve">
-    <value>more apps</value>
+    <value>más aplicaciones</value>
     <comment>AboutPage</comment>
   </data>
   <data name="PrivacyInfo" xml:space="preserve">
-    <value>privacy info</value>
+    <value>declaración de privacidad</value>
     <comment>About Page</comment>
   </data>
   <data name="RateAndReview" xml:space="preserve">
-    <value>rate and review</value>
+    <value>valorar y comentar</value>
     <comment>AboutPage</comment>
   </data>
   <data name="RatingMessage10Text" xml:space="preserve">
-    <value>You look to be getting a lot of use out of our application!
+    <value>¡Parece que nuestra aplicación te está sirviendo de gran ayuda!
 
-Why not give us a 5 star rating to show your appreciation?</value>
+¿Por qué en agradecimiento, no nos valoras con 5 estrellas?</value>
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="RatingMessage5Text" xml:space="preserve">
-    <value>We'd love you to rate our app 5 stars
+    <value>Nos gustaría que puntuaras nuestra aplicación con 5 estrellas.
 
-Showing us some love on the store helps us to continue to work on the app and make things even better!</value>
+¡Puntuandonos positivamente en la tienda nos ayuda a continuar trabajando en la aplicación y hacer las cosas todavía mejor!</value>
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="RatingNoText" xml:space="preserve">
-    <value>no thanks</value>
+    <value>no gracias</value>
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="RatingTitleText" xml:space="preserve">
-    <value>Enjoying our app?</value>
+    <value>¿Le gusta la aplicación?</value>
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="RatingYesText" xml:space="preserve">
-    <value>rate 5 stars</value>
+    <value>puntúa</value>
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="SupportAndFeedback" xml:space="preserve">
-    <value>support and feedback</value>
+    <value>apoyo y comentarios</value>
     <comment>About Page</comment>
   </data>
   <data name="SettingsTitle" xml:space="preserve">
-    <value>settings</value>
+    <value>configuración</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="IndicateRoundEnd" xml:space="preserve">
-    <value>indicate end of round</value>
+    <value>indicar el final del ciclo</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="PreventLockscreen" xml:space="preserve">
-    <value>prevent lock screen</value>
+    <value>prevenir el bloqueo de la pantalla</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="ReadRoundCounter" xml:space="preserve">
-    <value>read out number of rounds</value>
+    <value>leer número de ciclos</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="Rounds" xml:space="preserve">
-    <value>rounds</value>
+    <value>ciclos</value>
     <comment>MainPage</comment>
   </data>
   <data name="VibrationEnabled" xml:space="preserve">
-    <value>vibration enabled</value>
+    <value>vibración activada</value>
     <comment>SettingsPage</comment>
   </data>
   <data name="TimePerRound" xml:space="preserve">
-    <value>lap time</value>
+    <value>tiempo de la vuelta</value>
     <comment>MainPage</comment>
   </data>
   <data name="SoundEnabled" xml:space="preserve">
