@@ -37,6 +37,8 @@ namespace Frequenzer.App.ViewModels
 
         ICommand StartCommand { get; }
 
+        ICommand RestartCommand { get; }
+
         ICommand StopCommand { get; }
 
         ICommand PauseCommand { get; }

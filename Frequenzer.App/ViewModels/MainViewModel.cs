@@ -35,6 +35,7 @@ namespace Frequenzer.App.ViewModels
         private SoundEffect _alarmSound;
 
         private DelegateCommand _startCommand;
+        private DelegateCommand _restartCommand;
         private DelegateCommand _stopCommand;
         private DelegateCommand _pauseCommand;
         private DelegateCommand _continueCommand;
@@ -164,6 +165,15 @@ namespace Frequenzer.App.ViewModels
                 return _timerState == TimerState.Stopped;
             });
 
+            _restartCommand = new DelegateCommand(() =>
+            {
+                Start();
+                UpdateCommands();
+            }, () =>
+            {
+                return _timerState != TimerState.Stopped;
+            });
+
             _stopCommand = new DelegateCommand(() =>
             {
                 Stop();
@@ -219,6 +229,7 @@ namespace Frequenzer.App.ViewModels
         public void UpdateCommands()
         {
             _startCommand.RaiseCanExecuteChanged();
+            _restartCommand.RaiseCanExecuteChanged();
             _stopCommand.RaiseCanExecuteChanged();
             _pauseCommand.RaiseCanExecuteChanged();
             _continueCommand.RaiseCanExecuteChanged();
@@ -370,6 +381,11 @@ namespace Frequenzer.App.ViewModels
         public ICommand StartCommand
         {
             get { return _startCommand; }
+        }
+
+        public ICommand RestartCommand
+        {
+            get { return _restartCommand; }
         }
 
         public ICommand StopCommand
