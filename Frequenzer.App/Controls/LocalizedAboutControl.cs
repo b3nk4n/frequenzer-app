@@ -50,6 +50,7 @@ namespace Frequenzer.App.Controls
             contributors.Add(new ContributorModel("/Assets/Languages/czech.png", "Petr Hovorka"));
             contributors.Add(new ContributorModel("/Assets/Languages/italiano.png", "Roc Lat"));
             contributors.Add(new ContributorModel("/Assets/Languages/spanish.png", "Juan Febrero"));
+            contributors.Add(new ContributorModel("/Assets/Languages/russia.png", "Александр Чуркин"));
             SetContributorsList(contributors);
         }
     }

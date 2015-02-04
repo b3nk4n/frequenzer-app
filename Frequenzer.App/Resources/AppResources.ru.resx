@@ -117,16 +117,24 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ResourceFlowDirection" xml:space="preserve">
+    <value>LeftToRight</value>
+    <comment>Controls the FlowDirection for all elements in the RootFrame. Set to the traditional direction of this resource file's language</comment>
+  </data>
+  <data name="ResourceLanguage" xml:space="preserve">
+    <value>ru</value>
+    <comment>Controls the Language and ensures that the font for all elements in the RootFrame aligns with the app's language. Set to the language code of this resource file's language.</comment>
+  </data>
   <data name="AboutTitle" xml:space="preserve">
-    <value>sobre</value>
+    <value>о программе</value>
     <comment>AboutPage</comment>
   </data>
   <data name="ApplicationAuthor" xml:space="preserve">
-    <value>por Benjamin Sautermeister</value>
+    <value>Benjamin Sautermeister</value>
     <comment>AboutPage</comment>
   </data>
   <data name="ApplicationDescription" xml:space="preserve">
-    <value>Uma ferramenta inteligente para todos os tipos de coisas, como esportes, jogos, fotografia ou educação.</value>
+    <value>Это умный инструмент для различных вещей, таких как спортивные состязания, командные игры, интервальная съёмка фотографий или образование.</value>
     <comment>AboutPage</comment>
   </data>
   <data name="ApplicationTitle" xml:space="preserve">
@@ -138,7 +146,7 @@
     <comment>General</comment>
   </data>
   <data name="Contributors" xml:space="preserve">
-    <value>Colaboradores</value>
+    <value>Помощники</value>
     <comment>AboutPage</comment>
   </data>
   <data name="FeedbackBodyText" xml:space="preserve">
@@ -159,105 +167,97 @@ Application Version: {4}
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="FeedbackMessageText" xml:space="preserve">
-    <value>Lamento saber que você não quer avaliar o Frequenzer.
+    <value>Жаль слышать, что вы не хотите оценить Frequenzer.
 
-Conte-nos sobre a sua experiência ou sugira como podemos melhorá-lo.</value>
+Расскажите нам о своём опыте или предложите, как мы можем сделать это приложение ещё лучше.</value>
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="FeedbackNoText" xml:space="preserve">
-    <value>não, obrigado</value>
+    <value>нет, спасибо</value>
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="FeedbackSubject" xml:space="preserve">
-    <value>Frequenzer Feedback</value>
+    <value>Frequenzer обратная связь с пользователями</value>
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="FeedbackTitleText" xml:space="preserve">
-    <value>Como podemos melhorar?</value>
+    <value>Мы можем сделать это приложение лучше?</value>
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="FeedbackYesText" xml:space="preserve">
-    <value>enviar feedback</value>
+    <value>обратная связь</value>
     <comment>FeedbackDialogControl</comment>
   </data>
-  <data name="IndicateRoundEnd" xml:space="preserve">
-    <value>indicar fim da rodada</value>
-    <comment>SettingsPage</comment>
-  </data>
   <data name="MoreApps" xml:space="preserve">
-    <value>mais aplicativos</value>
+    <value>больше приложений</value>
     <comment>AboutPage</comment>
   </data>
-  <data name="PreventLockscreen" xml:space="preserve">
-    <value>evitar o bloqueio da tela</value>
-    <comment>SettingsPage</comment>
-  </data>
   <data name="PrivacyInfo" xml:space="preserve">
-    <value>informações de privacidade</value>
+    <value>информация о конфиденциальности</value>
     <comment>About Page</comment>
   </data>
   <data name="RateAndReview" xml:space="preserve">
-    <value>classificar e dar opinião</value>
+    <value>оцените нас</value>
     <comment>AboutPage</comment>
   </data>
   <data name="RatingMessage10Text" xml:space="preserve">
-    <value>Você parece estar gostando deste aplicativo!
+    <value>Мы уверены в том, что вы получаете много пользы от нашего приложения! 
 
-Por que não avaliar com 5 estrelas para mostrar o quanto você está gostando?</value>
+Почему бы не поставить нам 5 звёзд, чтобы показать свою признательность?</value>
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="RatingMessage5Text" xml:space="preserve">
-    <value>Adoraríamos que você classificasse este aplicativo com 5 estrelas.
+    <value>Мы хотели бы, чтобы вы поставили нашему приложению 5 звёзд. 
 
-Mostre o seu interesse na loja e ajude-nos a continuar trabalhando para tornar este aplicativo ainda melhor!</value>
+Ваши отзывы в магазине приложений помогают нам продолжать работать над приложением и делать некоторые его функции ещё лучше!</value>
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="RatingNoText" xml:space="preserve">
-    <value>não, obrigado</value>
+    <value>нет, спасибо</value>
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="RatingTitleText" xml:space="preserve">
-    <value>Gostando do Frequenzer?</value>
+    <value>Вам нравится наше приложение?</value>
     <comment>FeedbackDialogControl</comment>
   </data>
   <data name="RatingYesText" xml:space="preserve">
-    <value>avaliar com 5 estrelas</value>
+    <value>оценить</value>
     <comment>FeedbackDialogControl</comment>
   </data>
-  <data name="ReadRoundCounter" xml:space="preserve">
-    <value>ler o número de rodadas</value>
-    <comment>SettingsPage</comment>
-  </data>
-  <data name="ResourceFlowDirection" xml:space="preserve">
-    <value>LeftToRight</value>
-    <comment>Controls the FlowDirection for all elements in the RootFrame. Set to the traditional direction of this resource file's language</comment>
-  </data>
-  <data name="ResourceLanguage" xml:space="preserve">
-    <value>pt</value>
-    <comment>Controls the Language and ensures that the font for all elements in the RootFrame aligns with the app's language. Set to the language code of this resource file's language.</comment>
-  </data>
-  <data name="Rounds" xml:space="preserve">
-    <value>rodadas</value>
-    <comment>MainPage</comment>
-  </data>
-  <data name="SettingsTitle" xml:space="preserve">
-    <value>configurações</value>
-    <comment>SettingsPage</comment>
-  </data>
-  <data name="SoundEnabled" xml:space="preserve">
-    <value>som ativado</value>
-    <comment>SettingsPage</comment>
-  </data>
   <data name="SupportAndFeedback" xml:space="preserve">
-    <value>suporte e feedback</value>
+    <value>поддержка и обратная связь</value>
     <comment>About Page</comment>
   </data>
-  <data name="TimePerRound" xml:space="preserve">
-    <value>tempo da volta</value>
+  <data name="SettingsTitle" xml:space="preserve">
+    <value>настройки</value>
+    <comment>SettingsPage</comment>
+  </data>
+  <data name="IndicateRoundEnd" xml:space="preserve">
+    <value>уведомлять о приближении раунда к концу</value>
+    <comment>SettingsPage</comment>
+  </data>
+  <data name="PreventLockscreen" xml:space="preserve">
+    <value>предотвращать блокировку экрана</value>
+    <comment>SettingsPage</comment>
+  </data>
+  <data name="ReadRoundCounter" xml:space="preserve">
+    <value>считать колличество раундов вслух</value>
+    <comment>SettingsPage</comment>
+  </data>
+  <data name="Rounds" xml:space="preserve">
+    <value>раунд</value>
     <comment>MainPage</comment>
   </data>
   <data name="VibrationEnabled" xml:space="preserve">
-    <value>ativar vibração</value>
+    <value>вибрация</value>
+    <comment>SettingsPage</comment>
+  </data>
+  <data name="TimePerRound" xml:space="preserve">
+    <value>время круга</value>
+    <comment>MainPage</comment>
+  </data>
+  <data name="SoundEnabled" xml:space="preserve">
+    <value>звук включен</value>
     <comment>SettingsPage</comment>
   </data>
 </root>
